@@ -299,6 +299,23 @@
 	\end{tabular}
 \end{frame}
 
+\begin{frame}[t]
+	\frametitle{Terminal multiplexer}
+	\begin{itemize}
+		\item Tekstualni window manager
+		\item Multipleksira više virtualnih terminala
+	    \item Olakšavaju duge (eng. long running) zadatke
+	    \item Aktivni i nakon prekida veze sa serverom (npr. kod prekida SSH veze)
+	\end{itemize}
+	\vfill
+	\textit{GNU screen}
+	\begin{itemize}
+		\item Attach / Detach terminal sessions
+		\item[] \shell{screen -S mySessionName}
+		\item[] \shell{screen -r \$ID}
+	\end{itemize}
+\end{frame}
+
 \section{Mreža}
 \begin{frame}[t]
 	\frametitle{Mreža}

@@ -3,5 +3,10 @@ lectures/*/*
 !lectures/*/*.jpg
 !lectures/*/*.png
 !lectures/*/*.sh
+labs/*
+!labs/*.tex
+dz/*
+!dz/*.tex
+!dz/*.dat
 issues*
 .sync/*
