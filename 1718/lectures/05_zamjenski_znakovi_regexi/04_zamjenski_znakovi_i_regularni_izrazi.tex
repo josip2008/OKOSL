@@ -55,128 +55,6 @@
 \tableofcontents
 \end{frame}
 
-\section{Zamjenski znakovi}
-\begin{frame}[t]
-\frametitle{Zamjenski znakovi}
-\begin{itemize}
-  \item engl. wildcards
-  \item Koriste se za brzo i efikasno pretraživanje i izvršavanje naredbi
-\end{itemize}
-\begin{itemize}
-	\item Mogu se koristiti kod svih naredbi koje 
-	prihvaćaju datoteke ili direktorije kao argument!
-	\begin{itemize}
-		\item Ljuska \textbf{prije} pokretanja naredbi uklanja zamjenske znakove, pronalazi sve datoteke koje odgovaraju izrazu i postavlja ih umjesto zamjenskog izraza kao da su direktno uneseni
-		\item Potom pokreće naredbu koja ne dobiva nikakve informacije o zamjenskim znakovima!
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Zamjenski znakovi}
-\begin{itemize}
-	\item[] \textbf{Osnovni zamjenski znakovi}
-	\item[] \begin{tabular}{c l}
-		\shell{?}   & Odgovara točno jednom znaku\\
-		\shell{*}   & Odgovara bilo kojem broju znakova (ili nijednom)\\
-		\shell{[xyz]}  & Odgovara točno jednom znaku iz skupa xyz
-	\end{tabular}
-\end{itemize}
-\vfill
-\begin{itemize}
-	\item \textbf{Primjer 1}
-	\item[] Izlistajte sve datoteke čiji naziv počinje s b i nalaze se u \shell{/bin} direktoriju
-	\begin{itemize}
-		\item[] \shell{\$ ls -l /bin/b*}
-	\end{itemize}
-\end{itemize}
-\vfill
-\begin{itemize}
-	\item \textbf{Primjer 2}
-	\item[] Izlistati sve naredbe u \shell{/bin} direktoriju koje se sastoje od točno dva znaka
-	\begin{itemize}
-		\item[] \shell{\$ ls -l /bin/??}
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Zamjenski znakovi}
-\begin{itemize}
-	\item \textbf{Primjer 3}
-	\item[] Izlistati sve datoteke u \shell{/bin} direktoriju koje završavaju slovom \shell{d}
-  \begin{itemize}
-    \item[] \shell{\$ ls -l /bin/*d}
-  \end{itemize}
-\end{itemize}
-\vfill
-\begin{itemize}
-	\item \textbf{Primjer 4}
-	\item[] Ispisati sve datoteke u \shell{/bin} direktoriju koje započinju s a, b ili c
-  \begin{itemize}
-    \item Jedna mogućnost
-    \item[] \shell{\$ ls -l /bin/a* /bin/b* /bin/c*}
-    \item Kraće
-    \item[] \shell{\$ ls -l /bin/[abc]*}
-  \end{itemize}
-\end{itemize}
-\vfill
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Zamjenski znakovi}
-\begin{itemize}
-	\item \textbf{Primjer 5}
-	\item[] Izlistati sve datoteke u \shell{/bin} direktoriju koje u sebi 
-        sadrže barem jednu znamenku
-  \begin{itemize}
-    \item[] \shell{\$ ls -l /bin/*[0123456789]*}
-    \item Efikasnije: Zadavanjem \textbf{raspona znakova}
-    \item[] \shell{\$ ls -l /bin/*[0-9]*}
-  \end{itemize}
-\end{itemize}
-\vfill
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Zamjenski znakovi}
-\framesubtitle{Invertiranje skupa}
-\begin{itemize}
-  \item Korištenjem znaka \textasciicircum{} moguće je invertirati skup 
-        znakova u zagradi 
-\end{itemize}
-\vfill
-\begin{itemize}
-\item \textbf{Primjer 6}
-  \item[] Izlistati sve datoteke u direktoriju \shell{/usr/bin} koje ne 
-        započinju sa malim slovom abecede
-  \begin{itemize}
-    \item[] \shell{\$ ls -l /usr/bin/[\textasciicircum{}a-z]*}
-  \end{itemize}
-\end{itemize}
-\vfill
-\begin{itemize}
-  \item Ako znakove \textasciicircum{} i \shell{-} trebamo koristiti kao dio traženog skupa znakova tada \textasciicircum{} ne smije biti naveden na prvom mjestu u grupi, a \shell{-} mora biti naveden kao prvi ili zadnji znak
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Zamjenski znakovi}
-\framesubtitle{Isključenje značenja posebnih znakova}
-\begin{itemize}
-  \item Ponekad ne želimo posebno značenje zamjenskih znakova
-  \begin{itemize}
-    \item Što ako baš imamo datoteku koja se zove \shell{*} ?
-    \item U tom slučaju upotrebljavamo navodnike ili znak 
-          \shell{\char`\\}
-  \end{itemize}
-\end{itemize}
-\small
-  \begin{itemize}
-    \item[] \shell{\$ ls -l "/bin/b*"}
-    \item[] \shell{\$ ls -l /bin/b\char`\\{}*}
-  \end{itemize}
-\end{frame}
 
 \section{Regularni izrazi}
 \begin{frame}[t]
@@ -363,15 +241,60 @@
 	\item Nađeni izraz se koristi pozivanjem \shell{$\backslash$1} u naredbi, gdje je \shell{1} redni broj označenog podizraza
 \end{itemize}
 \vfill
-\begin{itemize}
-\item \textbf{Primjer 5}
-\item[] Naredba \shell{sed} za filtriranje i obradu teksta
-\small \begin{verbatim}$ sed -r "s/^Tekst ([[:digit:]])\. reda$/Promijenili 
-smo \1. red/" file.txt\end{verbatim}
-\end{itemize}
 \vfill
 \end{frame}
 
+
+\begin{frame}
+\frametitle{sed}
+\begin{itemize}
+	\item \textbf{S}tream \textbf{ED}itor
+	\item Služi za filtriranje i transformaciju teksta
+	\item Naredba vrlo širokih mogućnosti
+	\item Suštinski jednostavan, ali dokumentacija nije baš \textit{user-friendly}
+	\item Nekoliko naredbi, ali daleko najčešća \textbf{s} - \textit{substitute}
+
+	\begin{itemize}
+		\item \textbf{Primjer 5}
+		\item[] Naredba \shell{sed} za filtriranje i obradu teksta
+		\small \$ sed -r "s/windows/linux/" file.txt
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{sed - primjeri}
+	\begin{itemize}
+	    \item Nekoliko primjera:
+		\begin{itemize}
+			\item \textbf{Primjer 6}
+			\small \$ sed -r "s/windows/linux/" file.txt
+		\end{itemize}
+
+		\item mijenja \textbf{samo prvo javljanje} riječi "windows" u "linux" u jednom retku
+		\item navodnici nisu neophodni, ali su poželjni i dobra praksa
+		\item prvi znak iza slova "s" je delimiter - može biti bilo što, ali najčešće /
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+		\begin{itemize}
+			\item \textbf{Primjer 7}
+			\small \$ sed -r "s/\textasciicircum{}Tekst ([[:digit:]])\. reda\$/Promijenili 
+			smo \1. red/" file.txt
+		\end{itemize}
+
+		\item korištenjem \\1 (\\2, ...) može se sačuvati i ponovno iskoristiti određeni dio reda koji odgovara patternu
+
+		\begin{itemize}
+			\item \textbf{Primjer 8 - zamjena redoslijeda dvije riječi}
+			\small \$ sed -r 's/([a-z]+) ([a-z]+)/\2 \1/' file.txt
+		\end{itemize}
+
+		\item ako se nakon zadnjeg delimitera doda "g", on će zamijeniti sva pojavljivanja te riječi u istom retku
+	\end{itemize}
+\end{frame}
 
 \begin{frame}[t]
 \frametitle{Literatura}

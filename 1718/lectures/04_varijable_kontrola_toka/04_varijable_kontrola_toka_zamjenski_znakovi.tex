@@ -68,7 +68,7 @@
  	\item Svaka je varijabla tipa \textit{string}
 	\item Dvije vrste varijabli
   	\begin{itemize}
-  		\item Globalne varijable (Vidljivo iz svih shellova)
+  		\item Globalne varijable (Vidljivo iz više shellova)
   		\item Lokalne varijable (Vidljive samo u lokalnom shellu)
   	\end{itemize}
   
@@ -92,14 +92,20 @@
 		 	\item VAŽNO: razmaka ne smije biti ni s jedne strane znaka jednakosti
 		 \end{itemize}
 	 \item varijabla=\$(\shell{naredba}) - preusmjeravanje izlaza naredbe u varijablu
-	 \item \shell{export} varijabla - pretvaranje varijable u globalnu
+	 \item \shell{export} varijabla - pretvaranje varijable u globalnu za \textbf{child} procese
 	 \item \shell{echo} \$varijabla
 	 	\begin{itemize}
 	 		\item \shell{echo}  \$hello
 	 		\item \shell{echo}  \$num
 	 	\end{itemize}
- 	\item lokalna varijabla unutar skripte - \shell{local}
- 	
+ 	\item Lokalna varijabla unutar skripte - \shell{local}
+ 	\item Perzistentno globalne varijable treba spremiti na neki drugi način:
+ 	\begin{itemize}
+ 		\item \textasciitilde/.bashrc
+ 		\item \textasciitilde/.profile
+ 		\item /etc/environment
+ 	\end{itemize}
+
 \end{itemize}
 
 \end{frame}
@@ -126,6 +132,9 @@ echo $HELLO
 	\end{itemize}
 	\item NB: potreban razmak između zagrada i uvijeta
 	\item \shell{echo \$?} ispisuje rezultat testa
+	\begin{itemize}
+		\item ako je vraćena 0, to znači True (sjetite se C-ovskog \textit{return 0;})
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -202,7 +211,7 @@ echo $HELLO
 	\begin{lstlisting}[language=bash]
 #!/bin/bash
 HELLO="hello"
-if [ $HELLO="hello" ]
+if [ $HELLO = "hello" ]
 then
 	echo "$HELLO world"
 fi
@@ -227,10 +236,10 @@ fi
 	\begin{lstlisting}[language=bash]
 #! /bin/bash
 pom="kul"
-if [ pom="kul" ]
+if [ $pom = "kul" ]
 then
 	echo "Linux je $pom"
-elif [ pom="bezveze" ]
+elif [ $pom = "bezveze" ]
 then 
 	echo "Linux masterrace"
 else
