@@ -244,6 +244,7 @@
 \vfill
 \end{frame}
 
+\section{sed}
 
 \begin{frame}
 \frametitle{sed}
@@ -257,7 +258,7 @@
 	\begin{itemize}
 		\item \textbf{Primjer 5}
 		\item[] Naredba \shell{sed} za filtriranje i obradu teksta
-		\small \$ sed -r "s/windows/linux/" file.txt
+		\item \small \shell{\$ sed -r "s/windows/linux/" file.txt}
 	\end{itemize}
 \end{itemize}
 \end{frame}
@@ -266,9 +267,9 @@
 \frametitle{sed - primjeri}
 	\begin{itemize}
 	    \item Nekoliko primjera:
+		\item \textbf{Primjer 6}
 		\begin{itemize}
-			\item \textbf{Primjer 6}
-			\small \$ sed -r "s/windows/linux/" file.txt
+			\item \small \shell{\$ sed -r "s/windows/linux/" file.txt}
 		\end{itemize}
 
 		\item mijenja \textbf{samo prvo javljanje} riječi "windows" u "linux" u jednom retku
@@ -277,19 +278,22 @@
 	\end{itemize}
 \end{frame}
 
+
 \begin{frame}
     \begin{itemize}
+    	\item Nadalje:
+		\item \textbf{Primjer 7}
 		\begin{itemize}
-			\item \textbf{Primjer 7}
-			\small \$ sed -r "s/\textasciicircum{}Tekst ([[:digit:]])\. reda\$/Promijenili 
-			smo \1. red/" file.txt
+			\item \small \shell{\$ sed -r "s/\textasciicircum Tekst ([[:digit:]])\textbackslash. reda\$/Promijenili 
+			smo \textbackslash1. red/" file.txt}
 		\end{itemize}
 
-		\item korištenjem \\1 (\\2, ...) može se sačuvati i ponovno iskoristiti određeni dio reda koji odgovara patternu
+		\item korištenjem \textbackslash1 (\textbackslash2, \dots) može se sačuvati i ponovno iskoristiti određeni dio reda koji odgovara patternu
+		\vfill
 
+		\item \textbf{Primjer 8 - zamjena redoslijeda dvije riječi}
 		\begin{itemize}
-			\item \textbf{Primjer 8 - zamjena redoslijeda dvije riječi}
-			\small \$ sed -r 's/([a-z]+) ([a-z]+)/\2 \1/' file.txt
+			\item \small \shell{\$ sed -r 's/([a-z]+) ([a-z]+)/\textbackslash2 \textbackslash1/' file.txt}
 		\end{itemize}
 
 		\item ako se nakon zadnjeg delimitera doda "g", on će zamijeniti sva pojavljivanja te riječi u istom retku
