@@ -1,0 +1,57 @@
+\documentclass{exam}
+\usepackage[T1]{fontenc}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\newcommand{\shell}[1]{\texttt{#1}}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+    commentstyle=\color{red},
+      keywordstyle=\color{blue}
+      }
+
+      \title{Druga laboratorijska vježba}
+      \author{Osnove korištenja operacijskog sustava Linux}
+      \date{\today}
+
+\begin{document}
+\maketitle
+Za svaki zadatak potrebno je napisati po jednu bash skriptu.
+
+\subsection*{Zadatak 1.} 
+
+\textbf{todo za darka: smisli jos nekaj oko ovog zadatka, probaj nacrtati flowchart, poispravljaj greške i formatiraj}
+
+Ispiti se približavaju a to se osjeti i na vašem downloads folderu. U njemu imate skup datoteka od kojih su neke od njih \shell{.pdf}, neke su\shell{.docx} a neke pak samo \shell{.jpg}. Predmeti koje slušate imaju kratice \shell{OKOSL}, \shell{MAT4}, \shell{ABC}, a fajlovi koji se odnose na nastavu zgodno imaju formu: 
+
+
+\textbf{\textless kratica predmeta\textgreater \_\textless ime datoteke\textgreater .\textless pripadna ekstenzija\textgreater}.
+
+Vaš zadatak je razvrstati fajlove tako da u \shell{/tmp} napravite direktorij \shell{faks}, a u njemu za svaki od fajlova napravite direktorij po sljedećem pravilu.
+
+Ukoliko slušate predmet na faksu i predmet se zove \shell{A} radite direktorij \shell{A} unutrar \shell{/tmp} tako da rezultat izgleda \shell{/tmp/faks/A}
+
+unutar direktorija A postojat ce dva direktorija koja predlažemo napravite odmah, a to su \shell{pdfovi} i \shell{ostalo}
+
+Slijedi demonstracija kako bi se skripta trebala ponašati:
+
+\textbf{fancy demonstracija za koju trebam napisati rjesenj, todo..}
+
+čitam file \shell{A\_nesto.pdf}, ako ne postoji direktorij \shell{/tmp/faks/A} radim ga, ako ne postoji direktorij "pdfovi" i "ostalo" također ih radim, gledam koju ektenziju ima file nesto.pdf, pošto je \shell{.pdf} radim move u "pdfovi"
+
+citam file hobotnice.pdf, pretpostavljam da Documents postoji, radim move u ~/Documents
+
+citam file A\_predavanja.docx, ako ne postoji direktorij /tmp/faks/A radim ga, ako ne postoji pdfovi i ostalo i njih radi, gledam ekstenziju koju ima predavanja.docx. Vidim da nije .pdf tako da radim move u direktorij /tmp/faks/A/ostalo
+
+\begin{itemize}
+\item Prvo valja pridruziti varijable predmetima za koje znamo da su faks predmeti kako bismo razlikovali fajlove s materijala i fajlove koji nisu s faksa. Varijable koje pridruzujemo su OKOSL, MAT4 i ABC.
+\item Provjeravamo je li file s materijala
+\item Ako je file s materijala i ako folder s njegovim imenom u /tmp/faks ne postoji potrebno ga je napraviti, ali potrebno je napraviti i 2 foldera ispod njega, pdfovi i ostalo
+\item Nadalje ispitujemo ekstenziju, ako je ona .pdf i file je s materijala radimo move u /tmp/faks/\textless predmet\textgreater /pdfovi, ako nije s materijala ali je .pdf radimo move u /tmp/Documents/. Ako nije pdf, ali je s materijala radimo move u /tmp/faks/\textless predmet\textgreater /ostalo, i kao posljednji slucaj, ako nije s materijala niti .pdf radimo move u /tmp/various
+\end{itemize}  
+\end{document}
