@@ -1,4 +1,0 @@
-\beamer@endinputifotherversion {3.36pt}
-\select@language {english}
-\beamer@sectionintoc {1}{Regularni izrazi}{3}{0}{1}
-\beamer@sectionintoc {2}{sed}{13}{0}{2}
