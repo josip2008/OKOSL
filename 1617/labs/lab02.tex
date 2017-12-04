@@ -1,20 +1,8 @@
 \documentclass[12pt,a4paper]{article}
 \usepackage[croatian]{babel}
 \usepackage[utf8]{inputenc}
-\DeclareUnicodeCharacter{B0}{\degree}
-\DeclareUnicodeCharacter{2192}{\rightarrow}
-\DeclareUnicodeCharacter{2193}{\downarrow}
-
 \usepackage[top=20mm]{geometry}
 \usepackage{enumitem} 
-
-\usepackage{listings}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{gensymb}
-
-\usepackage{enumitem}
-
 \newcommand{\shell}[1]{\texttt{\textbf{#1}}}
 \renewcommand*{\familydefault}{\sfdefault}
 \renewcommand*{\sfdefault}{lmss}
@@ -78,67 +66,4 @@
     \item Datotekama koje imaju naziv oblika \shell{PNG-DDMMYYYY} (dan, mjesec, godina) promijeniti naziv u \shell{DD\_MM\_YYYY.png} \\ \textit{Primjer: \shell{PNG-07092015} $\longrightarrow$ \shell{07\_09\_2015.png}}
 	\end{itemize}
 
-	\subsection*{Zadatak 6}
-	\begin{enumerate}[label=\Alph*]
-	    \item 
-	Koristeći \shell{select} i popis država s glavnim gradovima izradite rudimentarnu aplikaciju kojom biste prikazali vremensku prognozu za danas. Kako biste dohvatili podatke o vremenu, koristite naredbu \shell{curl}, i to u obliku:
-
-	\shell{curl -s wttr.in/Zagreb}
-
-	Gdje Zagreb, očito, mijenjate sa željenim glavnim gradom
-
-	Primjer ispisa:
-
-	\begin{verbatim}
-	pucaj$ ./lab2_2.sh 
-	1) Tirana	 9) Nicosia	17) Budapest	25) Luxembourg	33) Warsaw 41) Madrid
-	2) Andorra	10) Republic	18) Reykjaík	26) Skopje	34) Lisbon	42) Stockholm
-	3) Vienna	11) Copenagen	19) Dublin	27) Valletta	35) Bucharest	43) Bern
-	4) Minsk	12) Tallinn	20) Rome	28) Chisinau	36) Moscow	44) Kiev
-	5) Brussels	13) Helsinki	21) Pristina	29) Monaco	37) San Marino	45) London
-	6) Sarajevo		14) Paris	22) Riga	30) Podgorica	38) Belgrade	46) City
-	7) Sofia	15) Berlin	23) Vaduz	31) Amsterdam	39) Bratislava
-	8) Zagreb	16) Athens	24) Vilnius	32) Oslo	40) Ljubljana
-	#? 33
-	Weather report: Warsaw, Poland
-
-	Mist
-	_ - _ - _ -  -2-1 °C        
-	_ - _ - _   → 9 km/h       
-	_ - _ - _ -  7 km           
-	0.1 mm         
-	#? 41		
-	Weather report: Madrid, Spain
-
-	  \   /     Clear
-	   .-.      1-4 °C         
-	― (   ) ―   ↓ 11 km/h      
-	   `-’      10 km          
-	  /   \     0.2 mm         
-	#? 
-
-	\end{verbatim}
-
-
-		
-
-
-	\item
-	Iterirajući kroz listu država i glavnih gradova koje smo vam dali u prethodnom zadatku, ispišite koje države Europe danas imaju kišni glavni grad.
-
-	Primjer ispisa za datum 1.12. 
-
-	\begin{verbatim}{}
-	pucaj$ ./lab2_3.sh
-	Albania has rainy capital
-	Bulgaria has rainy capital
-	Italy has rainy capital
-	Kosovo has rainy capital
-	Lithuania has rainy capital
-	Macedonia has rainy capital
-	Moldova has rainy capital
-	Montenegro has rainy capital
-
-	\end{verbatim}
-    \end{enumerate}
 \end{document}

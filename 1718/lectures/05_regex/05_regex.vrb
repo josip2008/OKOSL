@@ -1,0 +1,10 @@
+\frametitle{Regularni izrazi}
+\framesubtitle{Sintaksa}
+\textbf{Označeni podizraz}
+\begin{itemize}
+	\item Omogućuje korištenje nađenog izraza u daljnjem radu neke naredbe
+	\item Izraz se označava zatvaranjem kriterija u () zagrade
+	\item Nađeni izraz se koristi pozivanjem \shell{$\backslash$1} u naredbi, gdje je \shell{1} redni broj označenog podizraza
+\end{itemize}
+\vfill
+\vfill

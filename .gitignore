@@ -10,3 +10,15 @@ dz/*
 !dz/*.dat
 issues*
 .sync/*
+
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
