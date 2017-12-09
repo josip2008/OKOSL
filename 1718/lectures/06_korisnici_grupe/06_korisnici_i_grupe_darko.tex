@@ -73,7 +73,7 @@
 \begin{itemize}
 	\item Terminal -- U/I naprava za komunikaciju korisnika s računalom
 	\item Nekada fizički uređaj, danas programski emulatori
-	\item Omogćuju korisniku prikaz \textit{ljuske} - npr. \shell{bash}
+	\item Omogućuju korisniku prikaz \textit{ljuske} - npr. \shell{bash}
   \item Prijava na sustav
   \begin{itemize}
   	\item Prijava lozinkom ili drugim vjerodajnicama
@@ -151,6 +151,36 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Datoteka passwd}
+
+\begin{lstlisting}
+#!/bin/bash
+
+# ispisi datoteku /etc/passwd
+
+
+# ispisi liniju sa svojim userom
+
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Datoteka passwd}
+
+\begin{lstlisting}
+#!/bin/bash
+
+# ispisi datoteku /etc/passwd
+cat /etc/passwd
+
+# ispisi liniju sa svojim userom
+cat /etc/passwd | grep darko
+\end{lstlisting}
+
+\end{frame}
+
 \begin{frame}[t]
 	\frametitle{Baza shadow}
 	\begin{itemize}
@@ -188,7 +218,7 @@
     \end{flushleft}
     \end{table}
   \end{itemize}
-  \item Poseban oblik naredbe \shell{who} je \shell{who am i}
+  \item Poseban oblik naredbe \shell{who} je \shell{who am i} kao i \shell{who mom likes}
   \begin{itemize}
     \item Ispisuje tko je trenutni korisnik na trenutnom terminalu
   \end{itemize}
@@ -280,23 +310,80 @@ dominik  marvin,magrathea = (dino) /bin/dd
 \end{Verbatim}
 \end{frame}
 
+\begin{frame} {sudo funfacts}
 
-\begin{frame}
-  \Huge{TODO: sudoers sintaksa!}
+\begin{itemize}
+\item Pokretanjem naredbe \shell{sudo} s flagom \shell{-u} moguće je naredbu izvršiti kao drugi korisnik. Primjerice: 
+
+\shell{\$ sudoedit -u www \textasciitilde www/htdocs/index.html}
+
+Uredi file kao korisnik \shell{www}
+
+\item Analogna operacija je \shell{sudo -g grupa superkulnaredba} koja će pokrenuti naredbu dostupnu korisniku grupe \shell{grupa} 
+\end{itemize}
+
 \end{frame}
 
-\begin{frame}[t]
-\frametitle{Mijenjanje korisnika} 
+
+\begin{frame}{Sudoers sintaksa}
+Pogledajmo još jednom malo detaljnije primjer iz prethodnog slajda:
+
+\shell{dino ALL = (ALL) ALL} 
+
+možemo generalizirati kao:
+
+\shell{User Host = (Runas) Commands}
+
+Gdje unos tumačimo kao: "User may run Command as the Runas user on Host"
+
+Runas opcija govori koji \shell{sudo -u} odnosno \shell{sudo -g} će biti prihvaćeni, a koji odbijeni. 
+
+
+\end{frame}
+
+\begin{frame} {Sudoers Runas}
+
+Bitno je napomenuti da trenutna konfiguracija odobrava 
+
+\shell{sudo -u dominik naredba1},
+
+ ali ne odobrava \shell{sudo -g nkosl naredba1} gdje je \shell{nkosl} grupa kojoj dominik pripada.
+ 
+Da bismo to popravili korigiramo naš unos u:
+
+\shell{dino ALL = (ALL:ALL) ALL}
+
+Sada unos tumačimo kao: "User dino može pokretati sve naredbe i kao svaki user i kao svaka grupa"
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Sudoers naprednije korištenje}
 \begin{itemize}
-  \item Vrlo bitna naredba \shell{su} (engl. \emph{switch user})
-  \item Dva bitna oblika naredbe
-  \begin{itemize}
-    \item \shell{su <korisnicko ime>} - zadržava svojstva okoline (varijable i slično)
-    \item \shell{su - <korisnicko ime>} - stvara novu okolinu, svojstvenu korisniku
-  \end{itemize}
-  \item Bez argumenata mijenja korisnika u \shell{root}
+\item Ponekad se nalazimo u situaciji gdje bismo rado definirali skup pravila za određen skup korisnika. U takvim slučajevima koristimo varijablu Alias.
+\begin{lstlisting}
+User_Alias	FULLTIMERS = millert, mikef, dowdy
+User_Alias	WEBMASTERS = will, wendy, wim
+\end{lstlisting}
+
+\item Fulltimerima bismo željeli dopustiti da rade što god žele bez da ih se pita za password. Webmasterima bismo željeli dopustiti samo da mogu raditi naredbe koje grupa www odobrava, a johnu odobravamo da mijenja lozinke za sve osim za roota
 \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Sudoers rješenje problema}
+\begin{lstlisting}
+# fultimeri mogu pokretati sve, 
+# sa svih hostova i ne pitam ih za password
+FULLTIMERS	ALL=NOPASSWD: ALL
+# webmasteri mogu pokretati naredbe kao www
+WEBDEVELOPERS ALL=(www) ALL
+# john ne moze mjenjati root lozinke
+john ALL= /usr/bin/passwd [A-z]*, 
+		!/usr/bin/passwd root
+\end{lstlisting}
+\end{frame}
+
+
 
 \section{Grupe}
 \begin{frame}[t]
@@ -376,6 +463,19 @@ dominik  marvin,magrathea = (dino) /bin/dd
 	\begin{itemize}
 		\item[] \shell{groupadd, groupmod, groupdel}
 	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Mijenjanje korisnika} 
+\begin{itemize}
+  \item Vrlo bitna naredba \shell{su} (engl. \emph{switch user})
+  \item Dva bitna oblika naredbe
+  \begin{itemize}
+    \item \shell{su <korisnicko ime>} - zadržava svojstva okoline (varijable i slično)
+    \item \shell{su - <korisnicko ime>} - stvara novu okolinu, svojstvenu korisniku
+  \end{itemize}
+  \item Bez argumenata mijenja korisnika u \shell{root}
 \end{itemize}
 \end{frame}
 
