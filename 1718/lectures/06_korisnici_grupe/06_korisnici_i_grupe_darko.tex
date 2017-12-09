@@ -76,7 +76,7 @@
 	\item Omogućuju korisniku prikaz \textit{ljuske} - npr. \shell{bash}
   \item Prijava na sustav
   \begin{itemize}
-  	\item Prijava lozinkom ili drugim vjerodajnicama
+  	\item Prijava lozinkom ili drugim vjerodajnicama (npr. RSA)
   	\item Odmah po prijavi u sustav korisnik je smješten u svoj matični direktorij
   \end{itemize}
   \item Odjava iz sustava
@@ -160,7 +160,7 @@
 # ispisi datoteku /etc/passwd
 
 
-# ispisi liniju sa svojim userom
+# ispisi liniju sa svojim userom/imenom
 
 \end{lstlisting}
 
@@ -377,7 +377,7 @@ User_Alias	WEBMASTERS = will, wendy, wim
 FULLTIMERS	ALL=NOPASSWD: ALL
 # webmasteri mogu pokretati naredbe kao www
 WEBDEVELOPERS ALL=(www) ALL
-# john ne moze mjenjati root lozinke
+# john ne moze mijenjati root lozinke
 john ALL= /usr/bin/passwd [A-z]*, 
 		!/usr/bin/passwd root
 \end{lstlisting}
@@ -556,6 +556,40 @@ john ALL= /usr/bin/passwd [A-z]*,
   \item Sve prethodne akcije se mogu napraviti i navedenim naredbama
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Rekapitulacija}
+\begin{itemize}
+\item Kreirajte dva usera, test1 i test2.
+\item Uredite \shell{/etc/sudoers} na način da omogućite useru test1 pokretanje naredbe \shell{touch} kao user test2. Napomena: Naredba \shell{touch} u \shell{/usr/bin/touch}.
+\item Ulogirajte se kao test1 i provjerite jeste li dobro odradili gore navede korake
+\item Na kraju izbrišite oba usera 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Rekapitulacija - rješenje}
+\begin{itemize}
+\item Kreirajte dva usera, test1 i test2.
+
+\shell{sudo useradd test1 \&\& sudo useradd test2} -- potrebno postaviti i passwd za svakog
+
+\item Uredite \shell{/etc/sudoers} na način da omogućite useru test1 pokretanje naredbe \shell{touch} kao user test2. Napomena: Naredba \shell{touch} u \shell{/usr/bin/touch}.
+
+kroz \shell{sudo visudo} dodajemo:
+
+\shell{test1 ALL=(test2) NOPASSWD: /usr/bin/touch}
+
+\item Ulogirajte se kao test1 i provjerite jeste li dobro odradili gore navede korake
+
+\shell{su test1}
+
+Primjetite da niste u mogucnosti pokrenuti \shell{sudo -u test1 touch} makar ste ulogirani kao test1
+
+\shell{sudo userdel -r test1 \&\& sudo userdel -r test2}
+\end{itemize}
+\end{frame}
+
+
 
 \begin{frame}[t]
 \frametitle{Upravljanje korisnicima}
@@ -821,6 +855,7 @@ Skripta je pokrenuta
     \item Omogućuje listanje direktorija bez dodavanja dozvole za izvršavanje datoteka
     \item Koristan prilikom rekurzivne promjene modea:
     \item[] \hspace{1em} \shell{chmod -R a+X dir1}
+    \item Ukoliko direktorij nema postavljen execute bit, nije moguć pregled sadržaja
    \end{itemize}
 \end{itemize}
 \end{frame}
@@ -840,6 +875,8 @@ Skripta je pokrenuta
   \item Simbolički se označava s velikim \shell{T} na mjestu \shell{x} dozvole za \textit{others} korisnike
   \item[] {\footnotesize \shell{-rwxr--r-T 1 pero users 0 Jan  4 23:21 datoteka.txt} }
   \item Ako \textit{others} ujedno ima i \shell{x} dozvolu tada se sticky bit označava s malim \shell{t}
+  
+  \item Danas je sticky bit relevantan samo za direktorije.
 \end{itemize}
 \end{frame}
 
@@ -866,7 +903,7 @@ Skripta je pokrenuta
   \item[] {\footnotesize \shell{-rw-r-Sr-x 1 pero users 0 Jan  4 23:21 datoteka.txt} \hfill SGID }
 \end{itemize}
 \begin{itemize}
-  \item Primijetite da SUID, odnosno SGID ne impliciraju \shell{x} dozvolu vlasnicima datoteke. U gornjem primjeru samo \textit{others} imaju pravo izvršiti datoteku i u tom trenutku će isti dobiti prava vlasnika.
+  \item Primijetite da SUID, odnosno SGID ne impliciraju \shell{x} dozvolu vlasnicima datoteke. U gornjem primjeru samo \textit{users} imaju pravo izvršiti datoteku i u tom trenutku će isti dobiti prava vlasnika.
   \item Ako vlasnik, \textit{user} ili \textit{group} ujedno ima i \shell{x} dozvolu tada se posebni bitovi označavaju s malim \shell{s}
 \end{itemize}
 \end{frame}
