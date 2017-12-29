@@ -791,44 +791,44 @@ Skripta je pokrenuta
 \end{itemize}
 \end{frame}
 
-\section{Zadani mode}
-\begin{frame}[t]
-\frametitle{Zadani mode (1)}
-\begin{itemize}
-  \item Kreiranjem novog objekta on poprima zadani mode
-  \item Definira ga trenutni filesystem i procesi koji kreiraju objekt
-\end{itemize}
-\begin{itemize}
-  \item Primjenom \textbf{umask} mogu se ograničiti dozvole koje postavljaju nadređeni procesi
-  \item umask ima isti format kao i mode, no s različitim značenjem bitova
-  \begin{itemize}
-    \item \textbf{1} - Isključuje dozvolu na poziciji bita
-    \item \textbf{0} - Ne mijenja dozvolu koju je postavio nadležni proces
-  \end{itemize}
-\end{itemize}
-\end{frame}
+% \section{Zadani mode}
+% \begin{frame}[t]
+% \frametitle{Zadani mode (1)}
+% \begin{itemize}
+%   \item Kreiranjem novog objekta on poprima zadani mode
+%   \item Definira ga trenutni filesystem i procesi koji kreiraju objekt
+% \end{itemize}
+% \begin{itemize}
+%   \item Primjenom \textbf{umask} mogu se ograničiti dozvole koje postavljaju nadređeni procesi
+%   \item umask ima isti format kao i mode, no s različitim značenjem bitova
+%   \begin{itemize}
+%     \item \textbf{1} - Isključuje dozvolu na poziciji bita
+%     \item \textbf{0} - Ne mijenja dozvolu koju je postavio nadležni proces
+%   \end{itemize}
+% \end{itemize}
+% \end{frame}
 
-\begin{frame}[t]
-  \frametitle{Zadani mode (2)}
-\begin{itemize}
-  \item Naredbom \shell{umask} se mijenja trenutni umask
-  \begin{itemize}
-    \item \textbf{Bez argumenata} - ispisuje trenutnu vrijednost u oktalnom obliku
-    \item \textbf{Argument -S} - ispisuje trenutnu vrijednost u simboličkom obliku
-    \item \textbf{Argument 4 oktalne znamenke} - mijenja vrijednost umaska
-    \item[] \hspace{1em} Prva oktalna znamenka je za specijalne modove
-  \end{itemize}
-\end{itemize}
-\begin{itemize}
-  \item U datoteci s popisom montiranih datotečnih sustava, \shell{/etc/fstab} se mogu navesti tri vrste maski
-  \begin{itemize}
-    \item \textbf{umask} - Odnosi se na sve vrste datoteka
-    \item \textbf{fmask} - Odnosi se na sve regularne datoteke
-    \item \textbf{dmask} - Odnosi se na sve direktorije
-  \end{itemize}
-  \item Ove vrste maski se mogu navesti i prilikom korištenja naredbe \shell{mount}
-\end{itemize}
-\end{frame}
+% \begin{frame}[t]
+%   \frametitle{Zadani mode (2)}
+% \begin{itemize}
+%   \item Naredbom \shell{umask} se mijenja trenutni umask
+%   \begin{itemize}
+%     \item \textbf{Bez argumenata} - ispisuje trenutnu vrijednost u oktalnom obliku
+%     \item \textbf{Argument -S} - ispisuje trenutnu vrijednost u simboličkom obliku
+%     \item \textbf{Argument 4 oktalne znamenke} - mijenja vrijednost umaska
+%     \item[] \hspace{1em} Prva oktalna znamenka je za specijalne modove
+%   \end{itemize}
+% \end{itemize}
+% \begin{itemize}
+%   \item U datoteci s popisom montiranih datotečnih sustava, \shell{/etc/fstab} se mogu navesti tri vrste maski
+%   \begin{itemize}
+%     \item \textbf{umask} - Odnosi se na sve vrste datoteka
+%     \item \textbf{fmask} - Odnosi se na sve regularne datoteke
+%     \item \textbf{dmask} - Odnosi se na sve direktorije
+%   \end{itemize}
+%   \item Ove vrste maski se mogu navesti i prilikom korištenja naredbe \shell{mount}
+% \end{itemize}
+% \end{frame}
   
 \section{Promjena vlasnika}
 \begin{frame}[t]

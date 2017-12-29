@@ -1,0 +1,58 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[top=20mm]{geometry}
+\newcommand{\shell}[1]{\texttt{\textbf{#1}}}
+\renewcommand*{\familydefault}{\sfdefault}
+\renewcommand*{\sfdefault}{lmss}
+\pagenumbering{gobble}
+\begin{document}
+  \title{Domaća zadaća - 04\vspace{-2em}}
+  \maketitle
+  Za \textbf{svaki} zadatak treba napisati bash skriptu s rješenjem zadatka. Jedna se točka zadatka \textbf{može riješiti s više redova i naredbi} u skripti. \\
+
+  \subsection*{Zadatak 1}
+    \begin{itemize}
+      \item Kreirajte datoteku imenovanu kao korisnik koji trenutačno koristi terminal. (Naravno, to treba riješiti dinamički - nije dovoljno samo "hardkodirati" ime korisnika.)
+      \item U datoteku spremite osnovne podatke o korisniku (ime, home direktorij i ljuska) te podatke u kojim se grupama nalazi. Navedite koja je grupa korisniku primarna.
+      \item[] Primjer izlazne datoteke:
+      \item[] \begin{verbatim}
+      USER: fer
+      HOME DIR: /home/fer
+      SHELL: /bin/bash
+      GROUPS: sudo dialout cdrom sambashare
+      PRIMARY GROUP: fer
+      \end{verbatim}
+      \item Ispišite tu datoteku i potom ju izbrišite.
+    \end{itemize}
+
+  \subsection*{Zadatak 2}
+    \begin{itemize}
+      \item Kreirajte novog korisnika \shell{weakling} i "prebacite se u njega" - prijavite se u ljusku kao taj korisnik, i to u njegov matični direktorij i s njegovim varijablama okruženja (spomenuto na predavanju).
+      \item Pokušajte instalirati neki program kao taj korisnik. (Primjerice, \textit{sudo apt install hollywood} za Ubuntu i srodne distribucije.) U čemu je problem? Napišite u komentar.
+      \item Pokušajte riješiti taj problem, i u komentarima opišite taj postupak.
+      \item Odjavite se iz korisnika \shell{weakling} i izbrišite ga.
+    \end{itemize}
+
+  \subsection*{Zadatak 3}
+    \begin{itemize}
+      \item Kao bilo koji korisnik sa \shell{sudo} ovlastima pokušajte naredbom \shell{cd} ući u direktorij \shell{/root}.
+      \item To očito neće funkcionirati. Pokušajte sa \shell{sudo}. Opišite rezultat pokušaja u komentar.
+      \item Odgovor se očito ne krije u korištenju naredbe \shell{sudo}. Međutim, vještim\footnote{\textit{Hint: proučite što znači zastavica "-" naredbe za mijenjanje korisnika. Treba li nam ona ovdje?}} mijenjanjem korisnika na oportunim položajima moguće je smjestiti \textit{non-root} korisnika u \shell{/root} direktorij. Učinite to i ukratko opišite postupak.
+      \item Nakon što se kao \shell{sudo} korisnik nađete u \shell{/root} direktoriju, ispišite njegov sadržaj. Povežite taj postupak s dozvolama u tom direktoriju.
+
+      \item \textit{Bonus zadatak: saznajte i u komentaru ukratko opišite zašto \shell{sudo cd /root} ne polučuje očekivani rezultat iako ste korisnik sa \shell{sudo} ovlastima.}
+    \end{itemize}
+
+  \subsection*{Zadatak 4}
+    \begin{itemize}
+      \item Kreirajte korisnika \shell{okosl} s lozinkom \shell{okosl}. Osigurajte da se korisnik može prijaviti na sustav i da ima matični direktorij.
+      \item Kreirajte grupu \shell{linux} i dodajte novokreiranog korisnika u grupu.
+      \item Kreirajte direktorij \shell{/tmp/tmp\_etc} i u njega kopirajte sadržaj direktorija \shell{/etc}. Sljedeće će se tri točke odnositi na taj direktorij.
+      \item Korisnicima u grupi \shell{linux} dozvolite modificiranje \textbf{svih} datoteka s ekstenzijom \shell{.conf} u direktoriju i poddirektorijima.
+      \item Brisanje svih direktorija i poddirektorija omogućite samo korisniku \shell{okosl}.
+        \item Korisnicima u grupi \shell{linux} i svim ostalim korisnicima zabranite otvaranje poddirektorija.
+        \item[] U komentaru odgovorite: Mogu li članovi grupe \shell{linux} i dalje pristupiti datotekama koje se nalaze unutar bilo kojeg podirektorija? Objasnite. Ima li veze ako je grupa \shell{linux} korisniku primarna ili sekundarna?
+      \item Zabranite korisniku \shell{okosl} mogućnost prijave na sustav.
+    \end{itemize}
+\end{document}
