@@ -1,0 +1,109 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[top=20mm]{geometry}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\newcommand{\shell}[1]{\texttt{\textbf{#1}}}
+\renewcommand*{\familydefault}{\sfdefault}
+\renewcommand*{\sfdefault}{lmss}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+    commentstyle=\color{red},
+      keywordstyle=\color{blue}
+      }
+\begin{document}
+	\title{Laboratorijska vježba 3\\{\small Osnove korištenja operacijskog sustava Linux}\vspace{-2em}}
+	\maketitle
+	
+  \subsection*{Zadatak 1 - Korisnici i dozvole}
+  Stjepan je nedavno došao na novu poziciju asistenta jednog od predmeta na faksu te želi uvesti male preinake u dosadašnjoj organizaciji predmeta. Zamolio je kolegu sa zavoda Marka da njemu i studentima omogući pristup\footnote{Pristup serveru na daljinu izlazi iz okvira predmeta OKOSL te se detaljnije radi na NKOSL-u. Ovdje ćemo pretpostaviti da se studenti mogu ulogirati na server preko terminala negdje na fakultetu.} jednom malom Linux serveru. Ali, pošto je Stjepan, kao i njegovi studenti, početnik u korištenju Linuxa, zamolio je Marka da mu ograniči set naredbi koje smije koristiti u ključnim dijelovima sustava. Marko je smišljao kako olakšati Stjepanu, ali i sebi, i odlučio omogućiti Stjepanu da sâm upravlja korisnicima.\\*
+
+\noindent Potrebno je:
+\begin{itemize}
+\item stvoriti korisnika \textbf{stjepan}. Korisnika treba stvoriti bez matičnog direktorija, te da po defaultu koristi \shell{bash} ljusku.
+\item koristeći \shell{sudoers}, omogućiti korisniku \textbf{stjepan} administrativne ovlasti kod pokretanja naredbi za stvaranje/brisanje korisnika i grupa te upravljanje vlasnicima i dozvolama. Navedene naredbe želimo da korisnik pokreće bez lozinke\footnote{Napomena: možda će biti potrebno dodati još koju naredbu u taj popis.}.
+\end{itemize}
+
+\noindent Stjepanu se ograničenje svidjelo, te se odmah bacio na postavljanje sustava da bi se i studenti mogli ulogirati. Dobio je od nositelja predmeta popis studenata koji slušaju predmet, te je odlučio napisati skriptu koja će sama dodati sve studente u sustav, ali tako da studenti budu odvojeni od ostalih korisnika na serveru i da studenti ne mogu međusobno pristupiti matičnim direktorijima nego samo svom.\\*
+
+\noindent Potrebno je:
+\begin{itemize}
+  \item stvoriti grupu \textbf{studenti} koja će biti sekundarna grupa svim studentima
+\item stvoriti direktorij \shell{/home/studenti} u kojemu će se nalaziti matični direktoriji svih studenata. Direktoriju moraju moći pristupiti svi korisnici, ali nitko ne smije ništa zapisivati u njega.
+\item unutar direktorija \shell{/home/studenti} stvoriti direktorij \textbf{studenti-shared} koji će služiti kao zajednički direktorij za sve studente. Direktorij mora biti poput \shell{/tmp} direktorija, ali samo za studente, odnosno korisnici koji nisu u grupi \textbf{studenti} ne smiju vidjeti sadržaj direktorija niti išta zapisivati unutra.
+\item stvoriti novi \shell{skeleton} (strukturu matičnog direktorija) koji sadrži sve ono što matični direktoriji inače sadrže, uz dodatak dva direktorija: \shell{Documents}, \shell{Download} i simboličke poveznice na zajednički direktorij za studente. Naziv poveznice: \shell{Shared}
+    \item napisati skriptu za stvaranje novih korisnika. Skripta mora biti neinteraktivna, tj. mora napraviti što se traži od nje bez dodatnih unosa od strane korisnika tijekom izvođenja. Skripta mora:
+      \begin{itemize}
+    \item stvoriti korisnike koji su navedeni u datoteci\footnote{Datoteka sadrži imena koja je potrebno koristiti kao korisnička imena studenata.}
+    \item svakom korisniku postaviti da koristi \shell{bash} ljusku
+    \item svakom korisniku stvoriti matični direktorij koristeći naš \shell{skeleton}
+    \item svakom korisniku postaviti istu defaultnu lozinku\footnote{Lozinka može biti proizvoljna. Ako želite ići linijom manjeg otpora, možete iskoristiti zapis \shell{NREznZZd6RIqY} koji je kriptirani zapis lozinke "student1"}. Napomena: Postavljanje defaultne lozinke neinteraktivnim putem je sigurnosni rizik koji ćemo za potrebe ovog zadatka nakratko ignorirati.
+    \item osigurati da nitko ne može pristupiti matičnom direktoriju osim njegovog vlasnika, da bismo spriječili ostale studente da vide osjetljive podatke 
+      \end{itemize}
+    \item napisati skriptu za uklanjanje korisnika s istog popisa kao i prethodna, kao i uklanjanje njihovih matičnih direktorija
+\end{itemize}
+
+
+\subsection*{Zadatak 2 - Signali}
+Cilj ovog zadatka je pomoću dvije skripte i tri proizvoljno odabrana signala modelirati rad senzora koji prati stanje na pokretnoj traci nekog farmaceutskog pogona. Senzor prati količine tableta koje prolaze pokretnom trakom, a razlikuje tri vrste: kapsule, komprimirane i šumeće tablete. Prva skripta modelira stanje na pokretnoj traci, odnosno nadolazeće tablete modelira slanjem signala. Pretpostavite da je traka široka toliko da tablete jedna po jedna prolaze ispod senzora. Druga skripta modelira rad senzora uz pomoć obrade nadolazećih signala.\footnote{Signali se u \shell{bash} skriptama obrađuju pomoću naredbe \shell{trap}, detaljnije u \shell{man} stranicama}\\*
+
+\noindent Prva skripta u petlji nasumično odabire i šalje jedan od tri proizvoljno odabrana signala svake sekunde drugoj skripti:\\
+
+
+\begin{lstlisting}[language=bash,caption={Kostur prve skripte}]
+#!/bin/bash
+
+...
+# Citanje PID-a druge skripte
+...
+
+while true
+do
+    sleep 1
+    sigval=$((1 + RANDOM %3))
+    case $sigval in
+
+    ...
+    # Slanje odgovarajuceg signala 
+    ...
+
+    esac
+done
+\end{lstlisting}
+
+\noindent Druga skripta svake sekunde ispisuje zabilježene količine svake tablete. Pri dolasku pojedinog signala inkrementira odgovarajuću varijablu u kojoj čuva količinu te vrste tableta. Uz tri signala koji će modelirati nadolazeće tablete, skripta mora imati i signal koji obustavlja njen rad\footnote{Radi jednostavnosti demonstracije, preporučamo da to bude \shell{SIGINT} jer ga je lako poslati sa tipkovnice}. Pri obustavljanju rada ispisuje se ukupna količina svih očitanih tableta.\\
+
+
+\begin{lstlisting}[language=bash,caption={Kostur druge skripte}]
+#!/bin/bash
+
+  ...
+  # Ispis PID-a skripte
+  ...
+
+  ...
+  # Inicijalizacija varijabli i postavljanje signal handlera
+  ...
+
+while true
+do
+    ...
+    # Ispis kolicine za svaku tabletu
+    ...
+    sleep 1
+done
+\end{lstlisting}
+
+\pagebreak
+\subsection*{Zadatak 3 - Ljuska i procesi}
+  Priložena skripta \shell{lab03-3.sh} sadrži beskonačnu petlju. Na sljedeća pitanja je potrebno odgovoriti pokretanjem te skripte i manipulacijom njenog procesa.
+	\begin{itemize}
+    \item Pokrenite proces u foreground-u te ga zatim pošaljite u pozadinu. Objasnite kako ste to napravili. Kako biste proces poslali u pozadinu odmah pri pokretanju?
+    \item Nastavite izvođenje procesa u pozadini. Kako ste to izveli?
+    \item Pronađite \textbf{PID} pokrenute skripte i njezin \shell{nice} broj. Promijenite ga. Objasnite što ste s time postigli.
+    \item Ugasite terminal. Objasnite što se dogodilo s procesom. Koji signal mu je poslan? Navedite barem jedan način kako biste pokrenuli proces i osigurali nastavak njegova izvođenja nakon gašenja terminala.
+	\end{itemize}
+
+\end{document}
