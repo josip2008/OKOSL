@@ -1,0 +1,55 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[top=20mm]{geometry}
+\usepackage{enumerate}
+\newcommand{\shell}[1]{\texttt{\textbf{#1}}}
+\renewcommand*{\familydefault}{\sfdefault}
+\renewcommand*{\sfdefault}{lmss}
+\begin{document}
+	\title{Domaća zadaća - 05\\{\small Osnove korištenja operacijskog sustava Linux}\vspace{-2em}}
+	\maketitle
+	Za \textbf{svaki} zadatak treba napisati bash skriptu s rješenjem zadatka. Jedna se točka zadatka \textbf{može riješiti s više redova i naredbi} u skripti. \\
+	
+	\subsection*{Zadatak 1}
+	\begin{itemize}
+	    \item Ispišite \textbf{sve} procese koje je pokrenuo trenutni korisnik (i \textbf{samo} njih). Kao i uvijek, učinite to dinamički\footnote{Ovisno o pristupu koji odaberete, ako vam je korisničko ime dulje od 8 znakova, ono bi moglo biti skraćeno na format "prvih\_7\_znakova+". U tom slučaju nađite način da doskočite tome.}, a ne hardkodiranjem svog korisničkog imena.
+	    \item Sortirajte prethodni ispis po zauzeću memorije.
+	    \item Ispišite stablo procesa za trenutnog korisnika.
+
+	\end{itemize}
+
+	Sljedeći se zadaci odnose na skriptu \shell{even\_bash.sh}. To je skripta koja prima jedan cjelobrojni argument, a ispisuje je li on paran ili neparan.
+	\subsection*{Zadatak 2}
+	\begin{itemize}
+		\item Koristeći ljusku \shell{bash} i tu skriptu, provjerite parnost brojeva 27 i 42. Skriptu pokrenite sekvencom \shell{./}, a ne naredbom \shell{bash}.
+		\item Nakon toga, pokrenite neku ljusku koja nije \shell{bash} (npr. \shell{sh}, koja je dostupna na većini sustava - jednostavno pokretanjem naredbe \shell{sh}). Iz nove ljuske, pokušajte na isti način pokrenuti skriptu. U komentar napišite u čemu je problem.
+	\end{itemize}
+
+	Sljedeći se zadatak odnosi na C program signal\_handler.c.
+	\subsection*{Zadatak 3}
+	\begin{enumerate}
+		\item Signali SIGTERM vs. SIGKILL
+		\begin{itemize}
+		    \item Prevedite taj program (npr. \shell{gcc signal\_handler.c}) i pokrenite ga.
+		    \item Pronađite PID tog programa. Dinamičko rješenje nije nužno, ali bit će dodatno nagrađeno (jer se rezultat koristi u sljedećoj točki). U svakom slučaju, postupak opišite u komentarima.
+		    \item Pokušajte "ubiti" taj proces naredbom \shell{kill <pid>}. Zašto niste uspjeli?
+		    \item Pokušajte ga sada ubiti slanjem adekvatnog signala. Zašto ste sad uspjeli, iako je naoko situacija u kôdu ista?
+		  \end{itemize}
+		\item Exit codes
+		\begin{itemize}
+			\item Pokrenite program i pošaljite mu SIGUSR1.
+		    \item Pokrenite program i pošaljite mu SIGINT. Ponovno pokrenite program i pošaljite mu SIGUSR2. 
+		    \item Istražite što u ljusci radi sekvenca \shell{\$?} i potom u komentaru opišite kako možemo (osim čitanjem ispisane izlazne poruke) iz ljuske utvrditi je li izvođenje programa uspjelo ili ne. Misli se na semantiku izvođenja, u smislu "je li obavljeno što je trebalo biti obavljeno".
+		\end{itemize}
+	\end{enumerate}
+
+	\subsection*{Zadatak 4}
+	Skripta priložena uz treću laboratorijsku vježbu, \shell{lab03-3.sh}, sadrži beskonačnu petlju. Zadaci u nastavku odnose se na nju.
+	\begin{itemize}
+	    \item Pokrenite proces u \textit{foregroundu} te ga zatim pošaljite u pozadinu. Objasnite kako ste to napravili. Kako biste proces poslali u pozadinu odmah pri pokretanju?
+	    \item Aktivnom procesu (status \emph{RUNNING}) pošaljite \shell{SIGSTOP}. Kako ste to napravili? Što se dogodilo s procesom? Može li se signal \shell{SIGSTOP} programski obraditi?
+	    \item Nastavite izvođenje procesa u pozadini. Kako ste to izveli?
+	    \item Ugasite terminal. Objasnite što se dogodilo s procesom. Koji signal mu je poslan? Navedite barem jedan način kako biste pokrenuli proces i osigurali nastavak njegova izvođenja nakon gašenja terminala.
+	\end{itemize}
+\end{document}
