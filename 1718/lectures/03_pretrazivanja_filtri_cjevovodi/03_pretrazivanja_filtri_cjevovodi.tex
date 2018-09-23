@@ -31,11 +31,11 @@
 \newcommand{\shell}[1]{\texttt{#1}}
 
 \title{Osnove korištenja operacijskog sustava Linux}
-\subtitle{07. Pretraživanja, filtri i cjevovodi}
+\subtitle{03. Pretraživanja, filtri i cjevovodi}
 \author[Nino Nikola Stanušić i Goran Cetušić]{Nino Nikola Stanušić i Goran Cetušić\\{\small Nositelj: dr. sc. Stjepan Groš}}
 \institute[FER]{Sveučilište u Zagrebu \\
 				Fakultet elektrotehnike i računarstva}
-				
+
 \date{\todayiso}
 
 \begin{document}
@@ -109,8 +109,8 @@
   \item Približna definicija filtara bi mogla biti
   \begin{itemize}
     \footnotesize
-    \item[] Svaki program koji ulazne podatke čita sa standardnog ulaza, 
-            obrađuje ih na odgovarajući način te rezulat obrade 
+    \item[] Svaki program koji ulazne podatke čita sa standardnog ulaza,
+            obrađuje ih na odgovarajući način te rezultat obrade
             proslijeđuje na standarni izlaz
     \normalsize
   \end{itemize}
@@ -127,7 +127,7 @@
 \begin{frame}[t]
 \frametitle{Preusmjeravanje u datoteku (1)}
 \begin{itemize}
-  \item Kako bi preusmjerili izlaz neke naredbe u datoteku koristimo 
+  \item Kako bi preusmjerili izlaz neke naredbe u datoteku koristimo
         operator \shell{">"}
   \begin{itemize}
     \item Pogledajmo razliku između izvršavanja sljedeće dvije naredbe:
@@ -138,8 +138,8 @@
   \end{itemize}
   \item Zaključak
   \begin{itemize}
-    \item Druga varijanta naredbe preusmjerava izlaz u datoteku 
-          \shell{/tmp/test} 
+    \item Druga varijanta naredbe preusmjerava izlaz u datoteku
+          \shell{/tmp/test}
     \item Što ako datoteka već postoji?
   \end{itemize}
 \end{itemize}
@@ -154,10 +154,10 @@
   \end{itemize}
   \item Primjer
   \begin{itemize}
-    \item Potrebno je u jednu datoteku dobiti ispis direktorija 
+    \item Potrebno je u jednu datoteku dobiti ispis direktorija
           \shell{/bin, /sbin, /usr/bin} i \shell{/usr/sbin}
-    \begin{itemize} 
-      \item Napomena: za svaki direktorij mora se posebno pozivati 
+    \begin{itemize}
+      \item Napomena: za svaki direktorij mora se posebno pozivati
               naredba \shell{ls}!
     \end{itemize}
   \end{itemize}
@@ -169,7 +169,7 @@
 \begin{itemize}
 	\item Riješenje
 	\begin{itemize}
-	
+
 	\item[] \shell{\$ ls -l /tmp/}
 	\item[] \shell{\$ ls -l /bin/ >> /tmp/output}
 	\item[] \shell{\$ ls -l /sbin/ >> /tmp/output}
@@ -184,7 +184,7 @@
 \begin{frame}[t]
 \frametitle{Preusmjeravanje iz datoteke}
 \begin{itemize}
-  \item Ako želimo sadržaj neke datoteke preusmjeriti u neki program, 
+  \item Ako želimo sadržaj neke datoteke preusmjeriti u neki program,
         koristimo operator \shell{<}
   \item Recimo, želimo li pogledati sadržaj datoteke \shell{/etc/passwd},
         to možemo obaviti na sljedeći način:
@@ -200,7 +200,7 @@
 \frametitle{Preusmjeravanje ulaza i izlaza (1)}
 \begin{itemize}
   \item Moguće je istovremeno preusmjeravanje izlaza i ulaza
-  \item Primjer kopiranja datoteke \shell{/etc/passwd} u 
+  \item Primjer kopiranja datoteke \shell{/etc/passwd} u
         \shell{/tmp/passwd} uz pomoć naredbe \shell{cat}
   \begin{itemize}
     \item[] \shell{\$ cat < /etc/passwd > /tmp/passwd}
@@ -221,17 +221,17 @@
 		\item[] \shell{wget -O - http://ftp.hr.debian.org/README}
 	\end{itemize}
 \end{frame}
-  
+
 \begin{frame}[t]
 \frametitle{Preusmjeravanje između programa (1)}
 \begin{itemize}
   \item Do sada smo isključivo obavljali preusmjeravanje iz i u datoteku
   \begin{itemize}
     \item Ograničena funkcionalnost
-    \item Loša efikasnost, ako podatke između programa prebacujemo preko 
+    \item Loša efikasnost, ako podatke između programa prebacujemo preko
           datoteka
   \end{itemize}
-  \item Način povezivanja programa je upotrebom operatora \shell{|} (engl. 
+  \item Način povezivanja programa je upotrebom operatora \shell{|} (engl.
         \emph{pipe})
   \item[]
   \item Primjer
@@ -472,10 +472,10 @@ EOF
 \begin{frame}[t]
 \frametitle{Brojanje znakova, riječi i linija (1)}
 \begin{itemize}
-  \item Za prebrojavanje znakova, riječi i linija u tekstu koristimo 
+  \item Za prebrojavanje znakova, riječi i linija u tekstu koristimo
         naredbu \shell{wc} (engl. \emph{word count})
-  \item Broji riječi, linije i znakove u datoteci ili na standardnom ulaz 
-  \item Primjer, broj znakova, riječi i linija u datoteci 
+  \item Broji riječi, linije i znakove u datoteci ili na standardnom ulaz
+  \item Primjer, broj znakova, riječi i linija u datoteci
         \shell{/etc/passwd}
   \begin{itemize}
     \item[] \shell{\$ wc /etc/passwd}
@@ -527,7 +527,7 @@ EOF
 \begin{frame}[t]
 \frametitle{Pretraživanje teksta (1)}
 \begin{itemize}
-  \item Za pretraživanje tekstualnih datoteka koristi se naredba 
+  \item Za pretraživanje tekstualnih datoteka koristi se naredba
         \shell{grep}
   \begin{itemize}
     \item Traži uzorak u datoteci ili u podacima sa standardnog ulaza
@@ -551,7 +551,7 @@ EOF
   \end{itemize}
   \item Neke često korištene opcije
   \begin{itemize}
-    \item \shell{-v} ispisuje sve linije gdje se ne pojavljuje zadani 
+    \item \shell{-v} ispisuje sve linije gdje se ne pojavljuje zadani
           uzorak
     \item \shell{-i} pretraživanje bez razlike u malim i velikim slovima
   \end{itemize}
@@ -564,9 +564,9 @@ EOF
   \item Zadaci
   \begin{itemize}
     \item Pronaći svoje korisničko ime u datoteci \shell{/etc/passwd}
-    \item Potražiti konstantu SEEK\_SET u datoteci 
+    \item Potražiti konstantu SEEK\_SET u datoteci
           \shell{/usr/include/stdio.h}
-    \item Pronaći sve datoteke u \shell{/usr/lib} koje sadrže X11 u svom 
+    \item Pronaći sve datoteke u \shell{/usr/lib} koje sadrže X11 u svom
           nazivu
   \end{itemize}
 \end{itemize}
@@ -576,7 +576,7 @@ EOF
 \begin{frame}[t]
 \frametitle{Sortiranje tekstualnih linija (1)}
 \begin{itemize}
-  \item Za sortiranje tekstualnih i numeričkih podataka koristimo naredbu 
+  \item Za sortiranje tekstualnih i numeričkih podataka koristimo naredbu
         \shell{sort}
   \item Primjeri
   \begin{itemize}
@@ -584,7 +584,7 @@ EOF
     \item[] \shell{\$ sort /usr/include/stdio.h}
     \item Sortirajmo sve linije iz \shell{/usr/include/stdio.h} koje sadrže
           riječ \#define
-    \item[] \shell{\$ grep \textbackslash{}\#define /usr/include/stdio.h | 
+    \item[] \shell{\$ grep \textbackslash{}\#define /usr/include/stdio.h |
                    sort}
   \end{itemize}
 \end{itemize}
@@ -607,7 +607,7 @@ EOF
 \begin{frame}[t]
 \frametitle{Uklanjanje duplih linija (1)}
 \begin{itemize}
-  \item Za traženje i manipulaciju duplim linijama koristi se naredba 
+  \item Za traženje i manipulaciju duplim linijama koristi se naredba
         \shell{uniq}
   \begin{itemize}
     \item Sintaksa naredbe je
@@ -615,7 +615,7 @@ EOF
   \end{itemize}
   \item Češće korištene opcije su
   \begin{itemize}
-    \item[] \shell{-u} Ispisuje linije koje se ne ponavljaju  
+    \item[] \shell{-u} Ispisuje linije koje se ne ponavljaju
     \item[] \shell{-d} Ispisuje linije koje se ponavljaju barem jednom
     \item[] \shell{-c} Ispisuje za svaku liniju koliko puta se ponavlja
   \end{itemize}
@@ -638,7 +638,7 @@ EOF
 \begin{frame}[t]
 \frametitle{Izdvajanje pojedinih polja linije (1)}
 \begin{itemize}
-  \item Za izdvajanje pojedinih polja u liniji koristimo naredbu 
+  \item Za izdvajanje pojedinih polja u liniji koristimo naredbu
         \shell{cut}
   \item Podrazumijevani znak za razdvajanje polja je razmak
   \begin{itemize}
@@ -662,7 +662,7 @@ EOF
     \item[] \shell{-f} definira polja koja je potrebno propustiti na izlaz
     \item[] \shell{-c} ispisuje po kolonama
   \end{itemize}
-  \item Ako nije navedena datoteka tada se obrada obavlja na podacima sa 
+  \item Ako nije navedena datoteka tada se obrada obavlja na podacima sa
         standardnog ulaza
 \end{itemize}
 \end{frame}
@@ -688,7 +688,7 @@ EOF
 \begin{frame}[t]
 \frametitle{Pretraživanje datotečnog sustava (1)}
 \begin{itemize}
-  \item Za pretraživanje datoteka i direktorija koristimo naredbu 
+  \item Za pretraživanje datoteka i direktorija koristimo naredbu
         \shell{find}
   \begin{itemize}
     \item Vrlo kompleksna naredba s nizom mogućnosti
@@ -697,7 +697,7 @@ EOF
   \begin{itemize}
     \item[] \shell{find [opcije] [<direktoriji>] <uvjeti>}
   \end{itemize}
-  \item \shell{<direktoriji>} je popis direktorija koje je potrebno 
+  \item \shell{<direktoriji>} je popis direktorija koje je potrebno
         pretražiti
   \item \shell{<uvjeti>} definiraju uvjete pretraživanja
 \end{itemize}
@@ -752,10 +752,10 @@ EOF
 \begin{itemize}
   \item Primjeri
   \begin{itemize}
-    \item pronađimo sve direktorije i datoteke veće od 1M u \shell{/etc} 
+    \item pronađimo sve direktorije i datoteke veće od 1M u \shell{/etc}
           direktoriju
     \item[] \shell{\$ find /etc -type d -o -size +1M}
-    \item isto kao i prethodni primjer, ali izlistava pronađene 
+    \item isto kao i prethodni primjer, ali izlistava pronađene
           datoteke/direktorije
     \item[] \shell{\$ find /etc -type d -o -size +1M -ls}
   \end{itemize}
@@ -770,7 +770,7 @@ EOF
 \begin{frame}[t]
 \frametitle{Naredba \shell{whereis}}
 \begin{itemize}
-  \item Pronalazi gdje se nalazi izvorni kod naredbe, binarni zapis ili 
+  \item Pronalazi gdje se nalazi izvorni kod naredbe, binarni zapis ili
         stranica priručnika
   \item Sintaksa
   \begin{itemize}
@@ -788,7 +788,7 @@ EOF
 \begin{frame}[t]
 \frametitle{Naredba \shell{locate} (1)}
 \begin{itemize}
-  \item Traži datoteku koja u svojem imenu sadrži zadani uzorak -- 
+  \item Traži datoteku koja u svojem imenu sadrži zadani uzorak --
         preporučeno je njeno korištenje umjesto naredbe \shell{find}
   \begin{itemize}
     \item Manje opterećuje disk i brža je
@@ -839,7 +839,7 @@ EOF
   \shell{find} & pretrazivanje datoteka i direktorija \\ \hline
   \shell{locate} & pretrazivanje datoteka i direktorija \\ \hline
   \shell{whereis} & pronalazi izvorni kod naredbe \\ \hline
-  
+
 
 \end{tabular}
 \end{frame}
