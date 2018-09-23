@@ -1,0 +1,18 @@
+Kompajliranje prezentacija
+===========================
+
+Trenutno su u naddirektoriju nalazi Makefile koji će ili kompajlirati sve .tex
+datoteke na koje naiđe ili će generirati pdf koji će mu biti zadan kao target.
+
+Naredba "make" odnosno "make all" kompajlirat će sve .tex fajlove i generirati
+.pdf datoteku u pripadajućem direktoriju.
+
+$ time make all
+nešto
+
+Izvršavanje naredba traje relativno dugo i nije praktična ako nam treba samo
+jedno predavanje. U tu svrhu moguće je specificirati target tako da se generira
+određeno predavanje ili određeni zadaci za vježbu ili oboje.
+
+Naredba "make 05_regex/05_regex.pdf 05_regex/zzv_5.pdf" generirat će u folderu
+05_regex/ predavanje 05_regex.pdf kao i zadatke za vježbu zzv_5.pdf.
