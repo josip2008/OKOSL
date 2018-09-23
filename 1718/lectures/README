@@ -13,9 +13,9 @@ $ time make all
 Output written on 08_linux_u_praksi.pdf (27 pages, 1061991 bytes).
 Transcript written on 08_linux_u_praksi.log.
 
-real	0m56.757s
-user	0m55.610s
-sys		0m1.126s
+real    0m56.757s
+user    0m55.610s
+sys     0m1.126s
 
 Izvršavanje naredbe traje relativno dugo i nije praktična ako nam treba samo
 jedno predavanje. U tu svrhu moguće je specificirati target tako da se generira
