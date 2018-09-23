@@ -1,18 +1,31 @@
 Kompajliranje prezentacija
 ===========================
 
-Trenutno su u naddirektoriju nalazi Makefile koji će ili kompajlirati sve .tex
-datoteke na koje naiđe ili će generirati pdf koji će mu biti zadan kao target.
+Trenutno se u ovom direktoriju nalazi Makefile koji će ili kompajlirati sve .tex
+datoteke u pripadne .pdf datoteke (koje su navedene kao OUTPUT varijable u
+Makefileu) ili će generirati .pdf koji će mu biti zadan kao target.
 
-Naredba "make" odnosno "make all" kompajlirat će sve .tex fajlove i generirati
+Naredba "make" odnosno "make all" kompajlirat će sve .tex datoteke i generirati
 .pdf datoteku u pripadajućem direktoriju.
 
 $ time make all
-nešto
+...
+Output written on 08_linux_u_praksi.pdf (27 pages, 1061991 bytes).
+Transcript written on 08_linux_u_praksi.log.
 
-Izvršavanje naredba traje relativno dugo i nije praktična ako nam treba samo
+real	0m56.757s
+user	0m55.610s
+sys		0m1.126s
+
+Izvršavanje naredbe traje relativno dugo i nije praktična ako nam treba samo
 jedno predavanje. U tu svrhu moguće je specificirati target tako da se generira
 određeno predavanje ili određeni zadaci za vježbu ili oboje.
 
-Naredba "make 05_regex/05_regex.pdf 05_regex/zzv_5.pdf" generirat će u folderu
-05_regex/ predavanje 05_regex.pdf kao i zadatke za vježbu zzv_5.pdf.
+$ make 05_regex/05_regex.pdf 05_regex/zzv_5.pdf
+
+generirat će u folderu 05_regex/ predavanje 05_regex.pdf kao i zadatke za vježbu
+zzv_5.pdf.
+
+Navedeni Makefile ispod haube ulazi u direktorij i dva puta pokreće naredbu
+pdflatex nad .tex datotekom. Dva puta pokreće naredbu pdflatex tako da TOC i
+ostali labeli budu na mjestima gdje trebaju biti.
