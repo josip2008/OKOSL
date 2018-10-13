@@ -1,0 +1,22 @@
+
+\begin{document}
+\section{Operacijski sustav}
+Što je uopće operacijski sustav? Za nas(korisnike) operacijski sustav je
+resource manager. Njegova zadaća je na pametan način dodjeljivati resurse.
+Što znači na pametan način? Znači da siguran i učinkovit način mora osigurati
+da će korisnik dobiti ono što i očekuje (ni više ni manje od toga).
+
+Primjerice, od operacijskog sustava očekujemo da nam osigura da samo jedna
+aplikacija smije narediti printeru ispis. Pored toga, očekujemo i u neku ruku
+lakše korištenje kompjutera. Poprilično bi teško bilo navigirati file system
+ako umjesto datoteka vidimo memorijske lokacije na disku (što podaci u suštini
+i jesu).
+
+Kernel je taj koji i cijeloj priči brine o pametnom aspektu, on osigurava
+višekorisnički i višezadaćni način rada, on brine o virtualnoj memoriji i
+slično. Sve to bi bilo poprilično beskorisno ako na neki način kernel ne bi
+gledao prema user-spaceu. To gledanje kernela prema user-spaceu se obično
+naziva Linux API kojeg predstavljaju sistemski pozivi (read, open, write, ..).
+
+
+\end{document}
