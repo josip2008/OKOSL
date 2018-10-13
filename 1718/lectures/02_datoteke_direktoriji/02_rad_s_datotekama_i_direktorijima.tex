@@ -31,7 +31,7 @@
 \author[Antun Aleksa, Josip Žuljević]{Antun Aleksa, Josip Žuljević\\{\small Nositelj: dr. sc. Stjepan Groš}}
 \institute[FER]{Sveučilište u Zagrebu \\
 				Fakultet elektrotehnike i računarstva}
-				
+
 \date{\todayiso}
 
 \begin{document}
@@ -52,16 +52,16 @@
 \frametitle{Kopiranje datoteka}
 \begin{itemize}
   \item Kopiranje se obavlja naredbom \texttt{cp} (engl. \emph{copy})
-  \item Sintaksa naredbe 
+  \item Sintaksa naredbe
   \begin{itemize}
-    \item \texttt{cp \textless datoteka1\textgreater 
+    \item \texttt{cp \textless datoteka1\textgreater
                      \textless datoteka2\textgreater}
     \begin{itemize}
-      \item[-] Stvara kopiju datoteke \texttt{datoteka1} i naziva ju 
+      \item[-] Stvara kopiju datoteke \texttt{datoteka1} i naziva ju
                \texttt{datoteka2}
     \end{itemize}
-    \item \texttt{cp \textless datoteka1\textgreater 
-                     \textless datoteka2\textgreater 
+    \item \texttt{cp \textless datoteka1\textgreater
+                     \textless datoteka2\textgreater
                      \textless direktorij\textgreater}
     \begin{itemize}
       \item[-] Kopira datoteke \texttt{datoteka1} i \texttt{datoteka2} u
@@ -77,7 +77,7 @@
 \begin{frame}[t]
 \frametitle{Kopiranje direktorija}
 \begin{itemize}
-  \item Kopiranje direktorija (i svih poddirektorija i datoteka) se 
+  \item Kopiranje direktorija (i svih poddirektorija i datoteka) se
         obavlja zadavanjem opcije \texttt{-r} naredbi \texttt{cp}
   \begin{itemize}
     \item[] \texttt{cp -r \textless direktorij1\textgreater
@@ -85,7 +85,7 @@
     \item Ako \texttt{direktorij2} ne postoji, bit će kreiran kao kopija
           prvog
     \item Ako \texttt{direktorij2} postoji, \texttt{direktorij1} će biti
-          kopiran u njega 
+          kopiran u njega
   \end{itemize}
   \item Oba argumenta mogu biti apsolutna ili relativna
   \item Dosta naredbi ima neku opciju za rekurziju
@@ -99,15 +99,15 @@
 \begin{itemize}
   \item Premještanje i preimenovanje se obavlja \textbf{jednom} naredbom
         \texttt{mv} \\(engl. \emph{move})
-  \item Sintaksa naredbe 
+  \item Sintaksa naredbe
   \begin{itemize}
     \item[] \texttt{mv \textless datoteka1\textgreater
                        \textless datoteka2\textgreater}
     \begin{itemize}
       \item Mijenja ime datoteke \texttt{datoteka1} u \texttt{datoteka2}
     \end{itemize}
-    \item[] \texttt{mv \textless datoteka1\textgreater 
-                       \textless datoteka2\textgreater 
+    \item[] \texttt{mv \textless datoteka1\textgreater
+                       \textless datoteka2\textgreater
                        \textless direktorij\textgreater}
     \begin{itemize}
       \item Premješta datoteke \texttt{datoteka1} i \texttt{datoteka2}
@@ -120,7 +120,7 @@
 \begin{frame}[t]
 \frametitle{Preimenovanje i premještanje direktorija}
 \begin{itemize}
-  \item Naredba \texttt{mv} može služiti za preimenovanje direktorija 
+  \item Naredba \texttt{mv} može služiti za preimenovanje direktorija
   \begin{itemize}
     \item Sintaksa je ista kao za premještanje datoteka
     \item Može pomicati i direktorije bez potrebe za dodatnim argumentima
@@ -163,7 +163,7 @@
     \item \texttt{-r} rekurzivno brisanje
     \item \texttt{-f} prisilno brisanje
   \end{itemize}
-  \item Sintaksa je 
+  \item Sintaksa je
   \begin{itemize}
     \item[] \texttt{rm -rf \textless ime direktorija\textgreater\ldots}
   \end{itemize}
@@ -181,11 +181,14 @@
         poddirektorij
   \item Imena mogu sadržavati praznine
   \begin{itemize}
-    \item Praznine obično znače sljedeći argument naredbe 
+    \item Praznine obično znače sljedeći argument naredbe
   \end{itemize}
   \item Primjer:
   \begin{itemize}
     \item[] \texttt{\$ mkdir novi direktorij}
+    \begin{itemize}
+    	\item stvorena dva direktorija \texttt{novi} i \texttt{direktorij}
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -193,10 +196,10 @@
 \begin{frame}[t]
 \frametitle{Nazivi datoteka (2)}
 \begin{itemize}
-  \item Datoteka ili direktorij s prazninama označava se se na dva načina 
+  \item Datoteka ili direktorij s prazninama označava se se na dva načina
   \begin{itemize}
-    \item Stavljanje imena datoteke pod navodnike
-    \item ubacivanje znaka \textbackslash{} (engl. \emph{backslash}) 
+  \item Stavljanje imena datoteke pod navodnike (različito značenje jednostrukih i dvostrukih navodnika)
+    \item ubacivanje znaka \textbackslash{} (engl. \emph{backslash})
           prije svake praznine
   \end{itemize}
   \item Primjer:
@@ -213,7 +216,7 @@
 \begin{itemize}
   \item Datotečni sustav na Linuxu je strukturiran kao stablo
   \begin{itemize}
-    \item Ima jedan korijenski direktorij ispod kojeg su sve ostale 
+    \item Ima jedan korijenski direktorij ispod kojeg su sve ostale
           datoteke
   \end{itemize}
   \begin{flushleft}
@@ -277,7 +280,7 @@
       ;
   \end{tikzpicture}
 \end{flushleft}
-      
+
 
 \end{itemize}
 \end{frame}
@@ -322,16 +325,16 @@
 \begin{itemize}
   \item \texttt{/dev}
   \begin{itemize}
-    \item Direktorij s posebnim datotekama koje predstavljaju različite 
-          uređaje 
+    \item Direktorij s posebnim datotekama koje predstavljaju različite
+          uređaje
   \end{itemize}
   \item \texttt{/etc}
   \begin{itemize}
-    \item Konfiguracijske datoteke cijelog sustava 
+    \item Konfiguracijske datoteke cijelog sustava
   \end{itemize}
   \item \texttt{/lib} (\texttt{/lib64})
   \begin{itemize}
-    \item Biblioteke nužne za rad sustava 
+    \item Biblioteke nužne za rad sustava
     \item Tu se nalaze moduli operacijskog sustava.
   \end{itemize}
 \end{itemize}
@@ -364,12 +367,12 @@
   \item \texttt{/opt}
   \begin{itemize}
     \item Instalacije programa koji nisu dio standardnog sustava
-    \item Programi i pripadajuće datoteke se nalaze unutar jednog 
+    \item Programi i pripadajuće datoteke se nalaze unutar jednog
           direktorija.
   \end{itemize}
   \item \texttt{/proc}
   \begin{itemize}
-    \item Sadrži virtualne datoteke koje se mijenjaju ovisno o stanju 
+    \item Sadrži virtualne datoteke koje se mijenjaju ovisno o stanju
           sustava
     \item Pisanje u neku od datoteka može promijeniti ponašanje sustava.
   \end{itemize}
@@ -382,13 +385,13 @@
 \begin{itemize}
   \item \texttt{/sbin}
   \begin{itemize}
-    \item Sistemski programi koje administrator sustava treba imati na 
+    \item Sistemski programi koje administrator sustava treba imati na
           raspolaganju za podizanje sustava.
   \end{itemize}
   \item \texttt{/tmp}
   \begin{itemize}
     \item Direktorij za privremenu pohranu datoteka
-    \item U njega mogu pisati svi korisnici i najčešće ga koriste 
+    \item U njega mogu pisati svi korisnici i najčešće ga koriste
           aplikacije za spremanje datoteka tijekom rada
   \end{itemize}
 \end{itemize}
@@ -417,14 +420,14 @@
   \begin{itemize}
     \item Matični direktoriji korisnika smješteni su unutar ovog
           direktorija
-    \item Svaki korisnik posjeduje svoj direktorij gdje se nalaze osobne 
+    \item Svaki korisnik posjeduje svoj direktorij gdje se nalaze osobne
           datoteke korisnika
-    \item Postavke aplikacija za pojedinog korisnika nalaze se u njegovom 
+    \item Postavke aplikacija za pojedinog korisnika nalaze se u njegovom
           matičnom direktoriju, u skrivenim datotekama.
   \end{itemize}
   \item \texttt{/root}
   \begin{itemize}
-    \item Matični direktorij \emph{root} korisnika 
+    \item Matični direktorij \emph{root} korisnika
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -436,8 +439,8 @@
   \item \texttt{/usr}
   \begin{itemize}
     \item Sadrži vlastitu strukturu
-    \item Za razliku od \texttt{/sbin} i \texttt{/bin} direktorija, koji 
-          sadržavaju programe za osnovnu funkcionalnost sustava, ovdje su 
+    \item Za razliku od \texttt{/sbin} i \texttt{/bin} direktorija, koji
+          sadržavaju programe za osnovnu funkcionalnost sustava, ovdje su
           programi za normalan rad sa sustavom
     \item[]
     \item[] \texttt{/usr/bin}
@@ -461,9 +464,9 @@
   \item[] \texttt{/usr/local}
   \begin{itemize}
     \item Instalacije programa na lokalnom sustavu
-    \item Sadrži poddirektorije \texttt{/usr/local/bin} i 
+    \item Sadrži poddirektorije \texttt{/usr/local/bin} i
           \texttt{/usr/local/sbin}
-    \item U \texttt{/usr/local} nalazili su se programi specifični za 
+    \item U \texttt{/usr/local} nalazili su se programi specifični za
           pojedinog korisnika, dok su se u ostalim direktorijima nalazili
           programi za sve korisnike
   \end{itemize}
@@ -499,7 +502,7 @@
     \item \ldots
   \end{itemize}
 \end{itemize}
-\end{frame} 
+\end{frame}
 
 \begin{frame}[t]
 \frametitle{Unix datoteke (2)}
@@ -512,13 +515,13 @@
   \end{itemize}
   \item[] \shell{\$ mkdir direktorij}
   \item[] \shell{\$ ls -ld direktorij}
-  \item[] \shell{\footnotesize\textbf{d}rwxr-xr-x 2 cetko cetko 4096 
+  \item[] \shell{\footnotesize\textbf{d}rwxr-xr-x 2 cetko cetko 4096
                           2010-10-28 12:39 direktorij/}
 \end{itemize}
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{Obična datoteka} 
+\frametitle{Obična datoteka}
 \begin{itemize}
   \item Standardna datoteka, prva asocijacija na riječ datoteka
   \item Prazna datoteka stvara se naredbom \shell{touch} bez argumenata
@@ -530,7 +533,7 @@
 \frametitle{Imenovani cjevovod}
 \begin{itemize}
   \item engl. \emph{named pipe}
-  \item Cjevovodi služe za povezivanje izlaza i ulaza dva procesa (engl. 
+  \item Cjevovodi služe za povezivanje izlaza i ulaza dva procesa (engl.
         \emph{interprocess communication})
   \begin{itemize}
     \item Obični cjevovodi postoje samo dok traje komunikacija
@@ -548,7 +551,7 @@
   \item Uz svaki direktorij vezana je lista s pripadajućim datotekama
   \item Okosnica strukture sustava
   \item Direktorij obilježava znak \textbf{d} kod ispisa naredbom
-        \shell{ls -ld} 
+        \shell{ls -ld}
 \end{itemize}
 \end{frame}
 
@@ -556,7 +559,7 @@
 \frametitle{Priključnica}
 \begin{itemize}
   \item engl. \emph{socket}
-  \item Služi za komununikaciju procesa preko mreže 
+  \item Služi za komununikaciju procesa preko mreže
   \begin{itemize}
     \item Privremene datoteke
   \end{itemize}
@@ -570,7 +573,7 @@
 \frametitle{Datoteke uređaja (1)}
 \begin{itemize}
   \item Datoteke uređaja (engl. \emph{device files}) služe za komunikaciju
-        s vanjskim uređajima 
+        s vanjskim uređajima
   \begin{itemize}
     \item Nalaze se u \shell{/dev} direktoriju
   \end{itemize}
@@ -583,7 +586,7 @@
 \begin{itemize}
   \item Blok datoteke
   \begin{itemize}
-    \item Prijenos podataka odvija se u blokovima 
+    \item Prijenos podataka odvija se u blokovima
     \item Diskovi, CD-ROM uređaji i memorije
   \end{itemize}
   \item Označavaju se znakom \textbf{b}
@@ -618,7 +621,7 @@
     \item[] \shell{\$ ls -l b}
     \item[] \shell{\footnotesize lrwxrwxrwx 1 cetko cetko 1 2010-10-28 19:18 b -> a}
   \end{itemize}
-  \item Poveznice mogu referencirati apsolutne i relativne putanje 
+  \item Poveznice mogu referencirati apsolutne i relativne putanje
   \item Brisanjem simboličke poveznice podaci ostaju na sustavu
 \end{itemize}
 \end{frame}
@@ -630,7 +633,7 @@
   \item Ako želimo vidjeti sadržaj neke datoteke na zaslonu možemo
         upotrijebiti naredbu \shell{cat}
   \begin{itemize}
-    \item Sintaksa naredbe je 
+    \item Sintaksa naredbe je
     \item[] \shell{cat \textless ime datoteke\textgreater}
   \end{itemize}
 \end{itemize}
@@ -644,11 +647,11 @@
   \begin{itemize}
     \item Vrijeme zadnje promjene (\emph{mtime})
     \begin{itemize}
-      \item Naredba \shell{ls} ispisuje ovo vrijeme ako se drugačije 
+      \item Naredba \shell{ls} ispisuje ovo vrijeme ako se drugačije
                ne kaže!
     \end{itemize}
     \item Vrijeme zadnjeg pristupa (\emph{atime})
-    \begin{itemize} 
+    \begin{itemize}
       \item Naredba \shell{ls} će ispisati ovo vrijeme opcijom
             \shell{-u}
     \end{itemize}
@@ -676,7 +679,7 @@
         tipa
   \item U tom slučaju na raspolaganju nam je naredba \shell{file}
   \begin{itemize}
-    \item Ona pokušava odrediti vrstu datoteke na osnovu baze tipova 
+    \item Ona pokušava odrediti vrstu datoteke na osnovu baze tipova
           datoteka
   \end{itemize}
   \item Sintaksa je:
@@ -684,13 +687,13 @@
     \item[] \shell{file <ime datoteke>}
     \end{itemize}
 \end{itemize}
-\end{frame}  
+\end{frame}
 
 \begin{frame}[t]
 \frametitle{Naredba \shell{file} (2)}
 \begin{itemize}
-  \item Prilično kompleksna naredba koja ne daje točne rezultate u 100\% 
-        slučajeva, ali je ipak izuzetno korisna 
+  \item Prilično kompleksna naredba koja ne daje točne rezultate u 100\%
+        slučajeva, ali je ipak izuzetno korisna
   \item Napomena: tip datoteke u ovom slučaju se razlikuje od definicije
         Unix datoteka
   \begin{itemize}
@@ -711,7 +714,7 @@
   \item Ako je datoteka prevelika nećemo ništa vidjeti
   \begin{itemize}
     \item Primjer datoteke \shell{/usr/include/stdio.h}
-    \item Ako je datoteka prevelika, a zanima nas samo prvih N redaka, 
+    \item Ako je datoteka prevelika, a zanima nas samo prvih N redaka,
           možemo upotrijebiti naredbu \shell{head}
   \end{itemize}
   \item Sintaksa datoteke je:
@@ -722,11 +725,11 @@
   \item Ako je \shell{<n>} negativan, ispisuje sve osim zadnjih n redaka
 \end{itemize}
 \end{frame}
-  
+
 \begin{frame}[t]
 \frametitle{Pregled dijela sadržaja datoteke (2)}
 \begin{itemize}
-  \item Ako nas zanima samo zadnjih N redaka,možemo upotrijebiti 
+  \item Ako nas zanima samo zadnjih N redaka,možemo upotrijebiti
         naredbu \shell{tail}
   \begin{itemize}
     \item Sintaksa datoteke je:
@@ -734,7 +737,7 @@
   \end{itemize}
   \item Ako se ne navede opcija, ispisuje zadnjih 10 redaka, inače ispisuje
         zadnjih N redaka
-  \item Ako je \shell{<n>} pozitivan (ima znak +) ispisuje od zadanog 
+  \item Ako je \shell{<n>} pozitivan (ima znak +) ispisuje od zadanog
         retka do kraja!
 \end{itemize}
 \end{frame}
@@ -748,7 +751,7 @@
   \begin{itemize}
     \item \shell{less} je novija varijanta sa većim mogućnostima
   \end{itemize}
-  \item Standard na Linuxu, ali nije dostupna na komercijalnim Unix 
+  \item Standard na Linuxu, ali nije dostupna na komercijalnim Unix
         sustavima
   \item Obje naredbe kao argument primaju ime datoteke
   \begin{itemize}
@@ -762,9 +765,9 @@
 \begin{frame}[t]
 \frametitle{Mijenjanje sadržaja datoteka}
 \begin{itemize}
-  \item Postoji nekoliko tekstualnih editora na Linuxu 
+  \item Postoji nekoliko tekstualnih editora na Linuxu
   \item Često korišteni su \shell{nano} i \shell{vim}
-  \item Editor \shell{nano} je jednostavan za uporebu i najrašireniji na Linuxu
+  \item Editori \shell{nano} i \shell{vi} su dio standardne instalacije većine Linux distribucija
 \end{itemize}
 \end{frame}
 
@@ -785,7 +788,7 @@
   \shell{file} & ispis tipa datoteke \\ \hline
   \shell{head} & ispis prvih 10 redaka datoteke (\shell{[-n <n>]} = prvih n redaka) \\ \hline
   \shell{tail} & ispis zadnjih 10 redaka datoteke (\shell{[-n <n>]} = zadnjih n redaka) \\ \hline
-  
+
 
 \end{tabular}
 \end{frame}

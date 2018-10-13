@@ -32,7 +32,7 @@
 \author[Antun Aleksa, Josip Žuljević]{Antun Aleksa, Josip Žuljević\\{\small Nositelj: dr. sc. Stjepan Groš}}
 \institute[FER]{Sveučilište u Zagrebu \\
 				Fakultet elektrotehnike i računarstva}
-				
+
 \date{\todayiso}
 
 \begin{document}
@@ -69,7 +69,7 @@
     \item Osiguravanje višeprogramskog rada
 	\end{itemize}
   \item Ovakav opis je štur, ali definira najbitnije uloge
-        operacijskog sustava 
+        operacijskog sustava
 \end{itemize}
 \end{frame}
 
@@ -80,7 +80,7 @@
    \begin{itemize}
      \item Pisanje aplikacija za samo jedan je komplicirano
    \end{itemize}
-  \item OS preuzima detalje 
+  \item OS preuzima detalje
   \begin{itemize}
     \item Korisnik (u teoriji) treba znati samo što želi
     \item OS zna kako pristupiti određenom uređaju
@@ -98,7 +98,7 @@
 \begin{itemize}
   \item OS je posrednik između aplikacije i sklopovlja
   \begin{itemize}
-    \item korisnik $\rightarrow$ aplikacija $\rightarrow$ OS 
+    \item korisnik $\rightarrow$ aplikacija $\rightarrow$ OS
           $\rightarrow$ uređaj
   \end{itemize}
   \item Aplikacijama nikada nije dopušteno izravno pristupanje uređajima
@@ -147,7 +147,7 @@
     \item Prvotno potpuno besplatan
   \end{itemize}
 \end{itemize}
-\end{frame} 
+\end{frame}
 
 \begin{frame}[t]
 \frametitle{Unix porodica operacijskih sustava (2)}
@@ -173,7 +173,7 @@
 \begin{frame}[t]
 \frametitle{Razvoj Linuxa (1)}
 \begin{itemize}
-  \item Distribuirani razvoj 
+  \item Distribuirani razvoj
   \item Tisuće programera diljem svijeta
   \begin{itemize}
     \item Velik broj nezavisnih, gledano pojedinačno
@@ -191,7 +191,7 @@
 \frametitle{Razvoj Linuxa (2)}
 \begin{itemize}
   \item Linux je podijeljen na podsustave
-  \item Svaki podsustav ima tzv. ``održavatelja'' (engl. 
+  \item Svaki podsustav ima tzv. ``održavatelja'' (engl.
         \emph{maintainer})
   \begin{itemize}
     \item Održavatelj odlučuje o izmjenama (više-manje)
@@ -223,7 +223,7 @@
   \begin{itemize}
     \item Rolling release model
     \item Stable release model
-  \end{itemize} 
+  \end{itemize}
   \item \url{www.distrowatch.com}
 \end{itemize}
 \end{frame}
@@ -274,7 +274,7 @@
     \item GNOME, KDE, Xfce, Awesome, \ldots
     \item apt, yum, pacman, \ldots
   \end{itemize}
-  \item Distribucije su konačni proizvodi, operacijski sustavi u 
+  \item Distribucije su konačni proizvodi, operacijski sustavi u
         najširem smislu
 \end{itemize}
 \end{frame}
@@ -286,6 +286,7 @@
 
 \section{Komunikacija s računalom}
 \begin{frame}[t]
+%todo: smisli neki escape code koji ce napraviti nesto kul i napisi ovdje
 \frametitle{Terminal}
 \begin{itemize}
   \item ``Uređaj'' koji prima znakove i prikazuje ispis
@@ -299,6 +300,9 @@
   \end{itemize}
   \item Terminali upravljaju unosom i ispisom znakova
   \item Ljuska interpretira značenje znakova
+  \begin{itemize}
+  	\item Ljuska koju ćemo koristiti na predavanju je ljuska \texttt{bash}.
+  \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -309,12 +313,12 @@
   \begin{itemize}
     \item Kroz grafičko sučelje i putem ljuske/komandne linije
   \end{itemize}
-  \item Ljuska je aplikacija(!) koja prihvaća korisnikove naredbe i 
+  \item Ljuska je aplikacija(!) koja prihvaća korisnikove naredbe i
         izvršava ih
   \begin{itemize}
     \item Ljuska olakšava komunikaciju sa sustavom
   \end{itemize}
-  \item Ljuska označava spremnost za prihvaćanje naredbi prikazivanjem 
+  \item Ljuska označava spremnost za prihvaćanje naredbi prikazivanjem
         naredbenog retka (engl. \emph{command prompt})
 \end{itemize}
 \end{frame}
@@ -322,11 +326,14 @@
 \begin{frame}[t]
 \frametitle{Komunikacija sa računalom (2)}
 \begin{itemize}
-  \item Kada ljuska pokrene naredbu, čeka da se njeno izvršavanje 
+  \item Kada ljuska pokrene naredbu, čeka da se njeno izvršavanje
         završi
   \item Za to vrijeme ljuska ne prikazuje narebenu liniju!
   \begin{itemize}
     \item Moguće \textbf{prisilno} zaustaviti naredbu, Ctrl+C
+    \begin{itemize}
+    	\item Više o tome što se dogodi kad pritisnemo Ctrl+C na zadnjoj prezentaciji.
+    \end{itemize}
   \end{itemize}
   \item Primjer:
   \begin{itemize}
@@ -335,11 +342,61 @@
 \end{itemize}
 \end{frame}
 
-\section{Sustav pomoći}
+\section{Naredbe}
+\begin{frame}[t]
+\frametitle{Prikaz sadržaja direktorija}
+\begin{itemize}
+  \item Naredba \texttt {ls} (engl. \emph{list})
+  \begin{itemize}
+    \item Prva akcija nakon pokretanja ljuske na nepoznatom sustavu
+    \item bez parametara: popis svih datoteka i direktorija, poredan
+          abecednim redom, odozgo prema dolje te s lijeva na desno
+  \end{itemize}
+  \item \textbf {Linux razlikuje velika i mala slova}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Naredbe (1)}
+\begin{itemize}
+  \item Naredbe se pokreću na sljedeći način
+  \begin{itemize}
+    \item[] \textless naredba\textgreater \textless opcije\textgreater
+          \textless argumenti\textgreater
+  \end{itemize}
+  \item Argumenti označavaju nad čime se vrši naredba
+  \begin{itemize}
+    \item Često datoteke
+    \item Ponekad nisu potrebni
+    \begin{itemize}
+      \item Primjer \texttt{ls}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Naredbe (2)}
+\begin{itemize}
+  \item Opcije utječu na ponašanje naredbe
+  \begin{itemize}
+    \item duge opcije (engl. \emph{long options}) počinju s ``-{}-''
+    \item kratke opcije (engl. \emph{short options}) počinju s ``-''
+  \end{itemize}
+  \item Naredbe obično imaju različite opcije za isto ponašanje
+  \begin{itemize}
+    \item Primjer: \texttt{ls --help} \textbf{ili}
+          \texttt{ls -h}
+  \end{itemize}
+  \item Duge opcije su često opisne zbog lakšeg razumijevanja
+\end{itemize}
+\end{frame}
+
+\subsection{Sustav pomoći}
 \begin{frame}[t]
 \frametitle{Sustav pomoći}
 \begin{itemize}
-  \item Linux ima sustav pomoći
+  \item Pored argumenta \shell{-h} Linux ima sustav pomoći
   \begin{itemize}
     \item Naredba \shell{man}
     \begin{itemize}
@@ -351,7 +408,7 @@
     \end{itemize}
     \item U direktoriju \shell{/usr/share/doc} dosta materijala
   \end{itemize}
-  \item Sadrži opise i načine korištenja naredbi, funkcija i 
+  \item Sadrži opise i načine korištenja naredbi, funkcija i
         konfiguracijskih datoteka
 \end{itemize}
 \end{frame}
@@ -372,9 +429,9 @@
       \item \shell{man -f <ime datoteke>}
     \end{itemize}
   \end{itemize}
-  \item Primjer: Pregledavanje upute za naredbu \shell{man}
+  \item Primjer: Pregledavanje upute za naredbu \shell{ls}
   \begin{itemize}
-    \item \shell{man man}
+    \item \shell{man ls}
   \end{itemize}
 \end{itemize}
 \end{frame}
@@ -408,95 +465,42 @@
 \end{frame}
 
 \section{Prikaz sadržaja direktorija}
-\begin{frame}[t]
-\frametitle{Prikaz sadržaja direktorija}
-\begin{itemize}
-  \item Naredba \texttt {ls} (engl. \emph{list})
-  \begin{itemize}
-    \item Prva akcija nakon pokretanja ljuske na nepoznatom sustavu
-    \item bez parametara: popis svih datoteka i direktorija, poredan
-          abecednim redom, odozgo prema dolje te s lijeva na desno
-  \end{itemize}
-  \item \textbf {Linux razlikuje velika i mala slova}
-\end{itemize}
-\end{frame}
-
-\section{Naredbe}
-\begin{frame}[t]
-\frametitle{Naredbe (1)}
-\begin{itemize}
-  \item Naredbe se pokreću na sljedeći način
-  \begin{itemize}
-    \item[] \textless naredba\textgreater \textless opcije\textgreater 
-          \textless arugmenti\textgreater
-  \end{itemize}
-  \item Argumenti označavaju nad čime se vrši naredba
-  \begin{itemize}
-    \item Često datoteke
-    \item Ponekad nisu potrebni
-    \begin{itemize}
-      \item Primjer \texttt{ls}
-    \end{itemize}
-    \item Sve piše u man stranicama
-  \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Naredbe (2)}
-\begin{itemize}
-  \item Opcije utječu na ponašanje naredbe
-  \begin{itemize}
-    \item duge opcije (engl. \emph{long options}) počinju s ``-{}-''  
-    \item kratke opcije (engl. \emph{short options}) počinju s ``-''
-  \end{itemize}
-  \item Naredbe obično imaju različite opcije za isto ponašanje
-  \begin{itemize}
-    \item Primjer: \texttt{man -k regex} \textbf{ili}
-          \texttt{man --apropos regex}
-  \end{itemize}
-  \item Duge opcije su često opisne zbog lakšeg razumijevanja
-\end{itemize}
-\end{frame}
-
 %\section{Naredba \texttt{ls}}
 \begin{frame}[t]
 \frametitle{Naredba \texttt{ls} (1)}
 \begin{itemize}
   \item Naredba \texttt{ls} prihvaća niz opcija
-  \item Često korištena opcije je \texttt{-l} (engl. \emph{long})
+  \item Često korištena opcija je \texttt{-l} (engl. \emph{long})
   \begin{itemize}
     \item Ispisuje detalje o datotekama i direktorijima
   \end{itemize}
   \item Primjer: Izvršiti sljedeću naredbu
   \item[] \small\texttt{\$ ls -l /bin/sh}
-  \item[] \small\texttt{lrwxrwxrwx 1 root root 4 2010-04-29 10:44 /bin/sh 
+  \item[] \small\texttt{lrwxrwxrwx 1 root root 4 2010-04-29 10:44 /bin/sh
                         -> bash}
-\end{itemize}
-\end{frame}
 
-\begin{frame}[t]
-\frametitle{Naredba \texttt{ls} (2)}
-\begin{itemize}
+  \hspace{5ex}
   \item Stupci kod korištenja \texttt{ls} naredbe s \texttt{-l} opcijom
   \begin{itemize}
     \item Tip datoteke, dozvole, broj referenci, vlasnik, grupa, veličina
-          u oktetima, vrijeme zadnje promijene, ime datoteke
+          u oktetima, vrijeme zadnje promjene, ime datoteke
   \end{itemize}
   \item Često \texttt{ls} implicitno dodaje opciju \texttt{-{}-color}
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}[t]
-\frametitle{Naredba \texttt{ls} (3)}
+\frametitle{Naredba \texttt{ls} (2)}
 \begin{itemize}
   \item Naredbi \texttt{ls} moguće je zadati i ime datoteke/direktorija
   \begin{itemize}
     \item niz odvojen prazninama (označen s \ldots u \texttt{man})
   \end{itemize}
   \item Primjer
+  	  %todo: od svih datoteka zašto baš sym link???
   \item[] \small\texttt{\$ ls -l /bin/sh}
-  \item[] \small\texttt{lrwxrwxrwx 1 root root 4 2010-04-29 10:44 /bin/sh 
+  \item[] \small\texttt{lrwxrwxrwx 1 root root 4 2010-04-29 10:44 /bin/sh
                         -> bash}
   \item Opcija \texttt{-h} (engl. \emph{human readable})
   \begin{itemize}
@@ -527,14 +531,14 @@
   \item Direktoriji su organizirani kao stablo
   \item U Unix operacijskom sustavu nema diskova
   \begin{itemize}
-    \item Sve je \textbf{jedno} stablo direktorija s \textbf{jednim} 
+    \item Sve je \textbf{jedno} stablo direktorija s \textbf{jednim}
           korijenom
   \end{itemize}
   \centering
   \begin{tikzpicture}
     \node {/ (root)}
-        child { 
-          node {home} 
+        child {
+          node {home}
           child {node {student} }
           child {node {predavac} }
         }
@@ -542,7 +546,7 @@
     ;
 \end{tikzpicture}
 \end{itemize}
-\end{frame} 
+\end{frame}
 
 
 \begin{frame}[t]
@@ -551,10 +555,16 @@
   \item Trenutni (tekući, radni) direktorij je direktorij u kojem se
         nalazimo
   \begin{itemize}
-    \item Korisnik ili aplikacija
+  	\item Korisnik ili aplikacija
   \end{itemize}
-  \item Možemo saznati koji je radni direktorij naredbom \texttt{pwd} 
-        \\(engl. \emph{print working directory})
+  	\item Možemo saznati koji je radni direktorij naredbom \texttt{pwd}
+  		\\(engl. \emph{print working directory})
+	\begin{itemize}
+		\item Trenutni direktorij također je zapisan u varijabli PWD.
+		\begin{itemize}
+      		\item \shell{echo \$PWD}
+      	\end{itemize}
+	\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -566,25 +576,25 @@
     \item Služi za spremanje osobnih podataka i postavki
     \item Korisnik ima ovlasti za pisanje i brisanje unutar svog matičnog
           direktorija
-    \item Izvan matičnog direktorija \textbf{nije dozvoljeno} pisanje 
+    \item Izvan matičnog direktorija \textbf{nije dozvoljeno} pisanje
           korisnicima koji nisu administratori
   \end{itemize}
   \item Neposredno nakon pokretanja ljuske, trenutni direktorij je matični
-        direktorij 
+        direktorij
 \end{itemize}
 \end{frame}
 
 \begin{frame}[t]
 \frametitle{Relativna i apsolutna staza (1)}
 \begin{itemize}
-  \item Položaj datoteke ili direktorija na Unix/Linux sustavu može se 
+  \item Položaj datoteke ili direktorija na Unix/Linux sustavu može se
         zadati
   \begin{itemize}
     \item Apsolutno - počinje znakom ``\texttt{/}''
     \begin{itemize}
       \item[] Primjer: \texttt{/home/student/okosl}
     \end{itemize}
-    \item Relativno 
+	\item Relativno - implicitno počinje znakom ``\texttt{./}'' koji se često izostavlja
     \begin{itemize}
       \item[] Primjer: \texttt{student/okosl}
     \end{itemize}
@@ -621,33 +631,46 @@
           stvara
   \end{itemize}
   \item Naredba \texttt{mkdir} prihvaća opciju \texttt{-p}
-  %\begin{itemize}
-  %  \item Stvara sve potrebne poddirektorije ako ne postoje
-  %\end{itemize}
+  \begin{itemize}
+    \item Stvara sve potrebne poddirektorije ako ne postoje
+  \end{itemize}
 \end{itemize}
-\end{frame} 
+\end{frame}
 
+%todo: pogledaj je li ovo doista potrebno
 \begin{frame}[t]
 \frametitle{Prikaz sadržaja direktorija}
 \begin{itemize}
   \item Naredba \texttt{ls} ispisuje sadržaj direktorija
-  \item Opcijom \texttt{-d} ne izlistava se sadržaj direktorija već 
+  \item Opcijom \texttt{-d} ne izlistava se sadržaj direktorija već
         informacije o samom direktoriju
+  \begin{itemize}
+    \item Opcija je poprilično beskorisna ako nije u kombinaciji s primjerice
+        \texttt{-lh}.
+    \item Primjer: ispišimo detaljnije informacije o direktoriju \texttt{/var/log}
+        \hspace{5ex}
+    \item[] \texttt{\$ ls -ldh /var/log}
+    \item[] \texttt{drwxr-xr-x 6 root root 4.0K Sep 14 06:25 /var/log}
+  \end{itemize}
 \end{itemize}
 \end{frame}
-    
+
 
 \begin{frame}[t]
 \frametitle{Promjena direktorija (1)}
 \begin{itemize}
-  \item Promjena direktorija obavlja se naredbom \texttt{cd} (engl. 
+  \item Promjena direktorija obavlja se naredbom \texttt{cd} (engl.
         \emph{change directory})
-  \item Novi direktorij se zadaje 
+  \item Novi direktorij se zadaje
   \begin{itemize}
     \item relativno u odnosu na tekući direktorij
-    \item apsolutno u odnosu na korijenski direktorij  
+    \item apsolutno u odnosu na korijenski direktorij
   \end{itemize}
   \item Naredba \texttt{cd} bez argumenata vraća u matični direktorij
+  \begin{itemize}
+    \item naredba je ekvivalentna naredbi \texttt{cd $\sim$}. Tilda se u procesu
+        izvršavanja naredbe širi u korisnikov matični direktorij.
+  \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -661,9 +684,9 @@
   \end{itemize}
   \item Primjeri
   \begin{itemize}
-    \item \texttt{cd . } 
+    \item \texttt{cd . }
     \begin{itemize}
-      \item Mijenja direktorij u tekući direktorij, efektivno nema 
+      \item Mijenja direktorij u tekući direktorij, efektivno nema
                promjene
     \end{itemize}
     \item \texttt{cd .. }
@@ -685,7 +708,7 @@
   \item Česta pogreška korisnika DOS-a
   \begin{itemize}
     \item Upisivanje \texttt{cd..} (bez razmaka)
-    \item Na Unixu to je posebna naredba (\emph{.} može biti sastavni dio 
+    \item Na Unixu to je posebna naredba (\emph{.} može biti sastavni dio
           imena)
   \end{itemize}
 \end{itemize}
@@ -699,7 +722,7 @@
   \begin{tikzpicture}[auto, >=latex]
   \node{\$HOME}
     child {
-      node (a) {student} 
+      node (a) {student}
       child {
         node (b) {VJEZBA}
         child { node {dir1} }
@@ -707,7 +730,7 @@
       }
     }
   ;
-  \node (c) [left=1cm of a] {\$HOME/student/VJEZBA/../}; 
+  \node (c) [left=1cm of a] {\$HOME/student/VJEZBA/../};
   \node (d) [left=1cm of b] {\$HOME/student/./VJEZBA};
   \draw[->] (c) -- (a);
   \draw[->] (d) -- (b);
@@ -719,17 +742,33 @@
 \begin{frame}[t]
 \frametitle{Skripte}
 \begin{itemize}
-  \item Skripta je niz naredbi zapisan u tekstualnu datoteku, a za čije izvršavanje nije potreban compiler
-  \item Inače bi korisnik morao unostit svaku naredbu zasebno u ljusku
-  \item Kratica za skriptu je .sh, te se pokreće naredbom \shell{bash <ime\_skripte>}
+  \item Skripta je niz naredbi zapisan u tekstualnu datoteku, a za čije izvršavanje nije potreban prevoditelj već samo interpreter
+      \begin{itemize}
+        \item \texttt{bash} izvodi naredbu za naredbom za razliku od primjerice prevođenih jezika gdje se svaka naredba prvo
+            prevede u strojni kod koji se onda izvodi.
+      \end{itemize}
+  \item U pravilu se kao ekstenzija stavlja \texttt{.sh}
+  \item Skripta se može pokretati na dva načina, za sad ćemo skripte pokretati naredbom \shell{bash <ime\_skripte>}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[t]
+\begin{frame}[fragile]
 \frametitle{Primjer skripte}
-\begin{itemize}
-  \item \#!/bin/bash \\ mkdir radno \\ echo pozdrav\_ekipa \\ ls -lh
-\end{itemize}
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+
+echo $PWD
+
+# radim direktorij
+mkdir radno
+echo pozdrav_ekipa
+ls -lh
+
+# selim se u radno
+cd radno
+
+echo $PWD
+\end{lstlisting}
 \end{frame}
 
 \section{Pregled naredbi}
