@@ -28,7 +28,7 @@
 \author[Antun Aleksa, Josip Žuljević]{Antun Aleksa, Josip Žuljević\\{\small Nositelj: dr. sc. Stjepan Groš}}
 \institute[FER]{Sveučilište u Zagrebu \\
 				Fakultet elektrotehnike i računarstva}
-				
+
 \date{\todayiso}
 
 \begin{document}
@@ -56,6 +56,22 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Zadatak 1 - rješenje}
+    \begin{verbatim}
+#!/bin/bash
+
+cd ~/Desktop
+echo "sad se nalazim u $PWD"
+cd /tmp/
+echo "premjestio sam se u $PWD"
+mkdir -p ~/Desktop/music/moja_zika
+ls ~/Desktop/*
+cd ~/Desktop/music/
+ls
+    \end{verbatim}
+\end{frame}
+
 \begin{frame}[t]
 \frametitle{Zadatak 2}
 \begin{itemize}
@@ -72,6 +88,24 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Zadatak 2 - rješenje}
+    \begin{verbatim}
+#!/bin/bash
+
+cd ~/Desktop
+echo "sad se nalazim u $PWD"
+mkdir {a,b,c,d}
+echo "trenutno mi $PWD izgleda ovako:"
+ls
+mkdir a/aa
+cd aa
+echo $PWD
+cd ../.
+echo $PWD
+    \end{verbatim}
+\end{frame}
+
 \begin{frame}[t]
 \frametitle{Zadatak 3}
 \begin{itemize}
@@ -86,6 +120,20 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Zadatak 3 - rješenje}
+    \begin{verbatim}
+#!/bin/bash
+
+cd ~
+mkdir .OKOSL
+mkdir .OKOSL/{prvi,drugi}
+ls .OKOSL/*
+cd /tmp
+echo "trenutno se nalazim u $PWD i ispisujem ls ~/.OKOSL"
+ls ~/.OKOSL
+    \end{verbatim}
+\end{frame}
 
 \begin{frame}[t]
 \frametitle{Zadatak 4}
@@ -101,5 +149,16 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Zadatak 4 - rješenje}
+    \begin{verbatim}
+#!/bin/bash
+
+man ls
+ls ~
+ls -al ~
+ls -lh /sbin/wpa_supplicant
+    \end{verbatim}
+\end{frame}
 
 \end{document}
