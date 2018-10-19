@@ -1,0 +1,81 @@
+\documentclass{exam}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{datetime}
+\newcommand{\shell}[1]{\texttt{#1}}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\author{Osnove korištenja operacijskog sustava Linux}
+
+\date{\today}
+
+\begin{document}
+\title{Domaća zadaća - 01}
+\maketitle
+
+\paragraph{Kratke upute}
+\subparagraph{}
+Rješenje domaće zadaće potrebno je upisati u bash skriptu imena \shell{dz01-rjesenja.sh}. Prije rješenja svakog (pod)zadatka potrebno je dodati komentar s rednim brojem (pod)zadatka. Ako zadatak ima podzadatke, potrebno je dodati oznaku početka samo podzadataka, ne i cijelog zadatka. Primjerice, ako drugi zadatak nema podzadataka a treći ima dva podzadatka, isječak skripte bi trebao izgledati otprilike ovako:
+\begin{lstlisting}[language=bash]
+# Zadatak 2
+<neke naredbe>
+
+# Zadatak 3.a
+<neke naredbe>
+
+# Zadatak 3.b
+<neke naredbe>
+\end{lstlisting}
+
+Svaki (pod)zadatak mora imati svoju komentar-oznaku u skripti, neovisno o tome je li zadatak riješen ili ne.
+
+\paragraph{Zadaci}
+\begin{questions}
+
+\question Ispišite sadržaj \shell{.bash\_logout} datoteke u vašem matičnom direktoriju.
+
+\question Ispišite sadržaj svog \shell{/home} direktorija sortiran po veličini uzlazno.
+
+\question 
+\begin{parts}
+\part Pokretanjem iz svojeg matičnog direktorija, unutar direktorija \shell{/tmp} napravite direktorij \shell{OKOSL tjedan} koji će sadržavati direktorije \shell{ponedjeljak}, \shell{utorak}, \shell{srijeda}, \shell{cetvrtak}, \shell{petak} i \shell{subota}, gdje će \shell{subota} biti skriveni direktorij.
+\part Ispišite trenutni radni direktorij.
+\part Bez mijenjanja direktorija, u skrivenom direktoriju \shell{subota} napravite prazne datoteke \shell{predavanja}, \shell{labosi}, \shell{zadaca1}, \shell{zadaca2} ... \shell{zadaca8}.
+\part Kopirajte direktorij \shell{subota} u direktorij \shell{ponedjeljak}.
+\part Ispišite cijeli sadržaj direktorija \shell{/tmp/OKOSL tjedan} rekurzivno kako biste dokazali da su uistinu svi direktoriji i datoteke napravljeni kako smo i htjeli.
+\end{parts}
+
+
+\question \label{text:symlinkdir}
+\begin{parts}
+\part U svom matičnom direktoriju stvorite simboličku poveznicu \shell{Varionica} na direktorij \shell{/var}. \label{text:symlink}
+\part Odredite ukupno zauzeće (u GB) direktorija \shell{/var} koristeći poveznicu. \label{text:dirsize}
+\part Izbrišite simboličku poveznicu \shell{Varionica}.
+\end{parts}
+
+\question Odredite koliko vam je preostalo slobodne memorije (u GB) na disku montiranom na \shell{/} direktorij.
+
+\question Odredite kojeg su tipa datoteke \shell{/bin/bash}, \shell{/etc/passwd} i \shell{/boot}, tim redoslijedom.
+
+\textit{\newline Rješenje idućeg zadatka potrebno je napisati u zasebnu skriptu imena \shell{follow\_log.sh}}
+\question Ispišite sadržaj \shell{/var/log/syslog} datoteke \textbf{uz stalno praćenje} novih promjena u datoteci.
+
+\end{questions}
+\paragraph{}
+\underline{\textbf{Za one koji žele znati više:}} \textit{(Rješenja napisati u novu skriptu imena \shell{zon.sh}.)}
+\begin{questions}
+\item Ponovite podzadatke \ref{text:symlinkdir}. \ref{text:symlink}) i \ref{text:dirsize}) iz glavnog dijela i pritom podzadatak \ref{text:dirsize}) probajte sa sudo, a potom i bez sudo. Zašto je različito? (Odgovor napisati u skriptu u obliku komentara)
+\item Stvorite direktorij naziva \shell{!!}, a zatim direktorij naziva \shell{-}, te se pokušajte pozicionirati u oba direktorija korištenjem naredbe \shell{cd}. Riječ je o znakovima posebnih značenja u jeziku Bash, pa je potrebno malo razmisliti o načinu adresiranja direktorija.
+\item Napravite alias (\shell{.bash\_aliases} datoteka) \shell{update} koji odgovara naredbi za ažuriranje vašeg operacijskog sustava. (Uz korištene naredbe, u skriptu napisati i dodani isječak \shell{.bash\_aliases} datoteke u obliku komentara)
+\item Stvorite par privatnog i javnog RSA ključa, i, koristeći njih, osposobite SSH inačicu git repozitorija.
+\item Napravite novu git granu \textbf{dz01-additions} i u nju postavite datoteke s rješenjima prethodnih zadataka. 
+\end{questions}
+
+
+\end{document}
