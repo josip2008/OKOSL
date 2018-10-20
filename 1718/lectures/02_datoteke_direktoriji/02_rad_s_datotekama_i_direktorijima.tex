@@ -345,7 +345,7 @@
 \begin{itemize}
   \item \texttt{/lost+found}
   \begin{itemize}
-    \item Datoteke vračene nakon pada sustava
+    \item Datoteke vraćene nakon pada sustava
   \end{itemize}
   \item \texttt{/media}
   \begin{itemize}
@@ -639,6 +639,70 @@
 \end{itemize}
 \end{frame}
 
+\section{Pregled sadržaja datoteke}
+\begin{frame}[t]
+\frametitle{Pregled dijela sadržaja datoteke (1)}
+\begin{itemize}
+  \item Ako je datoteka prevelika nećemo ništa vidjeti
+  \begin{itemize}
+    \item Primjer datoteke \shell{/usr/include/stdio.h}
+    \item Ako je datoteka prevelika, a zanima nas samo prvih N redaka,
+          možemo upotrijebiti naredbu \shell{head}
+  \end{itemize}
+  \item Sintaksa datoteke je:
+  \begin{itemize}
+    \item[] \shell{head [-n <n>] <ime datoteke>}
+    \item Ako se ne navede opcija, ispisuje prvih 10 redaka, inače ispisuje prvih N redaka
+  \end{itemize}
+  \item Ako je \shell{<n>} negativan, ispisuje sve osim zadnjih n redaka
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Pregled dijela sadržaja datoteke (2)}
+\begin{itemize}
+  \item Ako nas zanima samo zadnjih N redaka,možemo upotrijebiti
+        naredbu \shell{tail}
+  \begin{itemize}
+    \item Sintaksa datoteke je:
+    \item[] \shell{tail [-n <n>] <ime datoteke>}
+  \end{itemize}
+  \item Ako se ne navede opcija, ispisuje zadnjih 10 redaka, inače ispisuje
+        zadnjih N redaka
+  \item Ako je \shell{<n>} pozitivan (ima znak +) ispisuje od zadanog
+        retka do kraja!
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{Pregledavanje datoteka po stranicama (1)}
+\begin{itemize}
+  \item Ako želimo pregledavati sadržaj datoteke stranicu po stranicu, na
+        raspolaganju imamo naredbe \shell{less} ili \shell{more}
+  \item ``Stranica'' je količina teksta koja stane na jedan ekran!
+  \begin{itemize}
+    \item \shell{less} je novija varijanta sa većim mogućnostima
+  \end{itemize}
+  \item Standard na Linuxu, ali nije dostupna na komercijalnim Unix
+        sustavima
+  \item Obje naredbe kao argument primaju ime datoteke
+  \begin{itemize}
+    \item Izlazak iz pregledavanja je s tipkom q
+    \item Naredba \shell{man} koristi te programe za prikaz uputa!
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Mijenjanje sadržaja datoteka}
+\begin{frame}[t]
+\frametitle{Mijenjanje sadržaja datoteka}
+\begin{itemize}
+  \item Postoji nekoliko tekstualnih editora na Linuxu
+  \item Često korišteni su \shell{nano} i \shell{vim}
+  \item Editori \shell{nano} i \shell{vi} su dio standardne instalacije većine Linux distribucija
+\end{itemize}
+\end{frame}
+
 \section{MAC vremena}
 \begin{frame}[t]
 \frametitle{MAC vremena (1)}
@@ -704,70 +768,6 @@
   \begin{itemize}
     \item Svaka ``ekstenzija'' je samo dio imena datoteke
   \end{itemize}
-\end{itemize}
-\end{frame}
-
-\section{Pregled sadržaja datoteke}
-\begin{frame}[t]
-\frametitle{Pregled dijela sadržaja datoteke (1)}
-\begin{itemize}
-  \item Ako je datoteka prevelika nećemo ništa vidjeti
-  \begin{itemize}
-    \item Primjer datoteke \shell{/usr/include/stdio.h}
-    \item Ako je datoteka prevelika, a zanima nas samo prvih N redaka,
-          možemo upotrijebiti naredbu \shell{head}
-  \end{itemize}
-  \item Sintaksa datoteke je:
-  \begin{itemize}
-    \item[] \shell{head [-n <n>] <ime datoteke>}
-    \item Ako se ne navede opcija, ispisuje prvih 10 redaka, inače ispisuje prvih N redaka
-  \end{itemize}
-  \item Ako je \shell{<n>} negativan, ispisuje sve osim zadnjih n redaka
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Pregled dijela sadržaja datoteke (2)}
-\begin{itemize}
-  \item Ako nas zanima samo zadnjih N redaka,možemo upotrijebiti
-        naredbu \shell{tail}
-  \begin{itemize}
-    \item Sintaksa datoteke je:
-    \item[] \shell{tail [-n <n>] <ime datoteke>}
-  \end{itemize}
-  \item Ako se ne navede opcija, ispisuje zadnjih 10 redaka, inače ispisuje
-        zadnjih N redaka
-  \item Ako je \shell{<n>} pozitivan (ima znak +) ispisuje od zadanog
-        retka do kraja!
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-\frametitle{Pregledavanje datoteka po stranicama (1)}
-\begin{itemize}
-  \item Ako želimo pregledavati sadržaj datoteke stranicu po stranicu, na
-        raspolaganju imamo naredbe \shell{less} ili \shell{more}
-  \item ``Stranica'' je količina teksta koja stane na jedan ekran!
-  \begin{itemize}
-    \item \shell{less} je novija varijanta sa većim mogućnostima
-  \end{itemize}
-  \item Standard na Linuxu, ali nije dostupna na komercijalnim Unix
-        sustavima
-  \item Obje naredbe kao argument primaju ime datoteke
-  \begin{itemize}
-    \item Izlazak iz pregledavanja je s tipkom q
-    \item Naredba \shell{man} koristi te programe za prikaz uputa!
-  \end{itemize}
-\end{itemize}
-\end{frame}
-
-\section{Mijenjanje sadržaja datoteka}
-\begin{frame}[t]
-\frametitle{Mijenjanje sadržaja datoteka}
-\begin{itemize}
-  \item Postoji nekoliko tekstualnih editora na Linuxu
-  \item Često korišteni su \shell{nano} i \shell{vim}
-  \item Editori \shell{nano} i \shell{vi} su dio standardne instalacije većine Linux distribucija
 \end{itemize}
 \end{frame}
 
