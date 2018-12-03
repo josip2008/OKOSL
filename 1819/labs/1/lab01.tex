@@ -19,13 +19,29 @@
 \begin{document}
 \maketitle
 Za svaki zadatak potrebno je napisati po jednu bash skriptu.
+
 \subsection*{Zadatak 1.}
+\begin{itemize}
+    \item Stvorite direktorij \shell{LAB1} i premjestite se u njega.
+    \item Stvorite novi direktorij \shell{source} i u njemu prazan file \shell{empty}.
+    \item U direktorij \shell{source} kopirajte sadržaj direktorija \shell{/boot} i direktorija \shell{/etc}.\\
+    Napomena: \textit{Koristite jednu naredbu.}
+    \item Ispišite zauzeće direktorija \shell{source} koristeći SI prefikse (potencije broja 10) mjernih jedinica.
+    \item U direktoriju \shell{LAB1} stvorite simboličku poveznicu \shell{target} na direktorij \shell{source}.
+    \item Premjestite se u direktorij \shell{target} bez dereferenciranja poveznice i ispišite adresu trenutnog direktorija. Pokažite da ispis adrese trenutnog direktorija daje \shell{LAB1/target}.
+    \item Vratite se u direktorij \shell{LAB1} i premjestite se u direktorij \shell{target} koristeći dereferenciranje poveznice. Pokažite da ispis adrese trenutnog direktorija daje \shell{LAB1/source}.
+    \item Koristeći poveznicu \shell{target} odredite veličinu direktorija \shell{source}.
+    \item Koristeći naredbu \shell{touch} stvorite praznu datoteku \shell{source/novi} i postavite joj vrijeme izmjene (mtime) tako da bude isto kao i datoteci \shell{source/empty}. Koristite jednu naredbu.
+    \item Izbrišite sve stvorene direktorije i datoteke u direktoriju \shell{LAB1} koristeći jednu naredbu.
+    \item Izbrišite prazan direktorij \shell{LAB1} koristeći naredbu za brisanje praznog direktorija.
+  \end{itemize} 
+\subsection*{Zadatak 2.}
 \begin{itemize}
 \item[a)] Napišite bash skriptu koja čita tekst sa
   standardnog ulaza i ispisuje ga na standardni izlaz.
   Nad pročitanim podacima ne treba raditi izmjene.
-\item[b)] Koristeći mogućnosti upravljanja
-  datotekama u Linuxu ostvarite tekstualnu komunikaciju između dva korisnika na
+\item[b)] Koristeći \textbf{mogućnosti upravljanja
+  datotekama} u Linuxu ostvarite tekstualnu komunikaciju između dva korisnika na
 istom računalu. Pretpostavite da svaki korisnik može imati dva terminala stalno
 otvorena. Poruke poslane od jednog korisnika moraju odmah biti prikazane drugom
 korisniku.\\ U implementaciji smijete koristiti najviše dvije datoteke. Rješenje
@@ -35,7 +51,7 @@ poruka.
 \end{itemize}
 
 
-\subsection*{Zadatak 2.}
+\subsection*{Zadatak 3.}
 Zanima nas koliko će se puta u nekoj godini dogoditi
 petak 13. Srećom, nalazimo se u Linux okruženju gdje nam na raspolaganju stoji
 naredba \shell{ncal}, te poznajemo naredbe za pretraživanje teksta koje će nam
@@ -45,11 +61,11 @@ olakšati ovaj zadatak.
 \item[a)] Prije svega, proučite man stranice naredbe \shell{ncal}. Mi ćemo ju
   koristiti u vrlo jednostavnom obliku: \shell{ncal <godina>}.
 \item[b)] Koristeći mogućnosti pretraživanja teksta prije svega iz ispisa
-  izbacite sve linije koje ne počinju nizom znakova \shell{Fr}.\footnote{Ili,
+  izbacite sve linije koje ne počinju\footnote{Kao što ćete vidjeti u predavanju koje obrađuje regularne izraze, početak linije se označava znakom \textasciicircum, pa je regularni izraz koji provjerava je li "Fr" na početku linije: \textit{\textasciicircum Fr}} nizom znakova \shell{Fr}.\footnote{Ili,
     jasno, \shell{Pe} od "Petak" ili nešto treće, ovisno o lokalizacijskim
     postavkama.}
-\item[c)] Nadalje, prebrojite koliko ima ponavljanja broja 13 u tim linijama. Primijetite da u ovom trenutku
-skripta uistinu broji koliko se puta u godini dogodio petak 13.
+\item[c)] Nadalje, koristeći opcije naredbe za pretraživanje teksta, prebrojite koliko \textbf{ukupno} ima ponavljanja broja 13 u tim linijama. Primijetite da u ovom trenutku
+skripta mora uistinu brojati koliko se puta u godini dogodio petak 13.
 
 \item[d)]
   Sljedeće što želimo dodati je da skripta od korisnika prima godinu za koju
@@ -64,10 +80,19 @@ skripta uistinu broji koliko se puta u godini dogodio petak 13.
  petkovi=$(ncal $godina | <ostatak super kul naredbe>)
  echo "U godini $godina, petak 13. se dogodio $petkovi puta."
 \end{lstlisting}
+  \textbf{Napomena: }detaljnije o varijablama u ljusci možete čuti u nastavku vještine, ali da bismo zadali nešto interesantniji zadatak, odlučili smo ipak već sada koristiti varijable. Zasada iznosimo sljedećih nekoliko naputaka:
+  \begin{itemize}
+    \item Konstrukt \textit{\$(naredba)} omogućuje korištenje vrijednosti na izlazu naredbe za npr. spremanje u neku varijablu, kao što je to ovdje varijabla \textit{petkovi}.
+    \item Adresiranje varijable se radi tako da se imenu varijable \textit{prependa} \$, kao što vidite u primjeru: \textit{\$petkovi}
+    \item Pripazite na razmake! Bash je pomalo osjetljiv i ne očekuje razmake pri pridruživanju vrijednost\\Ispravan primjer: \textit{a=5}\\
+    Pogrešan primjer: \textit{a = 5}
+  \end{itemize}
+
 
 \item[e)]
-  Sada kad imamo i lijep ispis zadatka, možda bi korisnika zanimalo koliko puta
-  će se petak 13. dogoditi u narednih x godina. Koristeći istu filozofiju, nakon
+  \textbf{Za one koji žele znati više:}
+  Sada kad imamo i lijep ispis zadatka, možda bi korisnika zanimalo koliko 
+  će se puta petak 13. dogoditi u narednih x godina. Koristeći istu filozofiju, nakon
   prvog ispisa zatražite sljedeći upis "do koje godine te zanima koliko puta će se
   dogoditi petak 13.: " gdje će korisnik unijeti, primjerice, godinu "2100", a
   program mu ispisati:
@@ -103,46 +128,48 @@ done
 \end{lstlisting}
 \end{itemize}
 
-\subsection*{Zadatak
-  3.}
-Mali je Ivica prije pola godine naišao na skladbu o Linuxu koja mu se jako
-svidjela. Iako je siguran da je skladbu preuzeo (na najlegalniji mogući način),
-ne sjeća se kamo ju je spremio. Stoga se odlučio javiti prijatelju, inače
-entuzijastičnom linuksašu, koji će mu drage volje napisati skriptu koja će
-riješiti sve njegove probleme, i tako proširiti \textit{dobru riječ Linuxa}.
-Odlučio je da će skripti na ulaz poslati riječ za koju je siguran da se nalazi
-\textbf{negdje} u nazivu pjesme. Nakon izlistavanja svih \shell{.mp3} datoteka s tom
-riječju u imenu bit će potrebno samo upisati indeks pjesme, slušati ju i uživati.
-Taj ste, prijatelj, naravno, upravo Vi.
-\begin{itemize}
-\item[a)]
-  Pomoću naredbe \\ \shell{wget -r --no-parent -nH -nc -R "index.html*"
-    --cut-dirs=1 https://marvin.kset.org/\~{}okosl/lab1/ -P ~/OKOSL/lab1} preuzmite datoteke,
-  kako biste mogli jednostavnije testirati valjanost skripte.
-\item[a)]Proučite naredbe za puštanje \shell{.mp3} zvučnih datoteka. Preporučamo
-  instalaciju \shell{vlc}, te korištenje \shell{nvlc} naredbe.
-\item[b)] Kroz drugi zadatak ste se upoznali s načinima čitanja inputa. Isti princip
-  iskoristite za čitanje inputa u ovom zadatku. Preporuča se komunikacija s
-  korisnikom pomoću \shell{echo} naredbe.
-\item[c)] Nakon zadovoljavajućeg izgleda inicijalne komunikacije pomoću
-  \shell{find} naredbe pronađite sve \shell{.mp3} datoteke rekurzivno iz vašeg matičnog
-  direktorija. Izlaz preusmjerite u tekstualnu datoteku u \shell{/tmp/lab1.dat}.
-\item[d)]Čitajte tu datoteku kroz \shell{while} petlju na način:
-  
-\begin{lstlisting}[language=bash,caption={Iteracija kroz redove datoteke}]
-#!/bin/bash...
-cat /tmp/lab1.dat | while read line do ... done
+\textbf{Napomena: } kao i s varijablama, ovdje smo, pak, posegnuli za petljama. Primjer bi vam trebao biti dovoljan za upoznavanje s \textit{for} petljom u Bashu, a detaljnije o kontroli toka kasnije.
 
-\end{lstlisting}
+% \subsection*{Zadatak
+%   3.}
+% Mali je Ivica prije pola godine naišao na skladbu o Linuxu koja mu se jako
+% svidjela. Iako je siguran da je skladbu preuzeo (na najlegalniji mogući način),
+% ne sjeća se kamo ju je spremio. Stoga se odlučio javiti prijatelju, inače
+% entuzijastičnom linuksašu, koji će mu drage volje napisati skriptu koja će
+% riješiti sve njegove probleme, i tako proširiti \textit{dobru riječ Linuxa}.
+% Odlučio je da će skripti na ulaz poslati riječ za koju je siguran da se nalazi
+% \textbf{negdje} u nazivu pjesme. Nakon izlistavanja svih \shell{.mp3} datoteka s tom
+% riječju u imenu bit će potrebno samo upisati indeks pjesme, slušati ju i uživati.
+% Taj ste, prijatelj, naravno, upravo Vi.
+% \begin{itemize}
+% \item[a)]
+%   Pomoću naredbe \\ \shell{wget -r --no-parent -nH -nc -R "index.html*"
+%     --cut-dirs=1 https://marvin.kset.org/\~{}okosl/lab1/ -P ~/OKOSL/lab1} preuzmite datoteke,
+%   kako biste mogli jednostavnije testirati valjanost skripte.
+% \item[a)]Proučite naredbe za puštanje \shell{.mp3} zvučnih datoteka. Preporučamo
+%   instalaciju \shell{vlc}, te korištenje \shell{nvlc} naredbe.
+% \item[b)] Kroz drugi zadatak ste se upoznali s načinima čitanja inputa. Isti princip
+%   iskoristite za čitanje inputa u ovom zadatku. Preporuča se komunikacija s
+%   korisnikom pomoću \shell{echo} naredbe.
+% \item[c)] Nakon zadovoljavajućeg izgleda inicijalne komunikacije pomoću
+%   \shell{find} naredbe pronađite sve \shell{.mp3} datoteke rekurzivno iz vašeg matičnog
+%   direktorija. Izlaz preusmjerite u tekstualnu datoteku u \shell{/tmp/lab1.dat}.
+% \item[d)]Čitajte tu datoteku kroz \shell{while} petlju na način:
   
-  U svakom retku ispišite broj datoteke i njeno ime. Možete istražiti i kako
-  promijeniti boje svakog ispisa, pa pokušati to primijeniti.
-\item[e)] Ponovno komunicirajte s korisnikom te ga tražite da ispiše valjan
-  indeks \shell{.mp3} datoteke. Skripta ne smije nastaviti izvršavanje dok se ne unese
-  valjan indeks \shell{.mp3} datoteke.
-\item[f)] Ispišite punu putanju \shell{.mp3} datoteke pod tim indeksom, te ju pokrenite
-  pomoću \shell{nvlc} (ili neke druge naredbe za pokretanje \shell{.mp3} datoteke).
-\end{itemize}
+% \begin{lstlisting}[language=bash,caption={Iteracija kroz redove datoteke}]
+% #!/bin/bash...
+% cat /tmp/lab1.dat | while read line do ... done
+
+% \end{lstlisting}
+  
+%   U svakom retku ispišite broj datoteke i njeno ime. Možete istražiti i kako
+%   promijeniti boje svakog ispisa, pa pokušati to primijeniti.
+% \item[e)] Ponovno komunicirajte s korisnikom te ga tražite da ispiše valjan
+%   indeks \shell{.mp3} datoteke. Skripta ne smije nastaviti izvršavanje dok se ne unese
+%   valjan indeks \shell{.mp3} datoteke.
+% \item[f)] Ispišite punu putanju \shell{.mp3} datoteke pod tim indeksom, te ju pokrenite
+%   pomoću \shell{nvlc} (ili neke druge naredbe za pokretanje \shell{.mp3} datoteke).
+% \end{itemize}
 
 \end{document}
 
