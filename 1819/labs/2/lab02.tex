@@ -1,0 +1,170 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[croatian]{babel}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{B0}{\degree}
+\DeclareUnicodeCharacter{2192}{\rightarrow}
+\DeclareUnicodeCharacter{2193}{\downarrow}
+
+\usepackage[top=20mm]{geometry}
+\usepackage{enumitem}
+
+\usepackage{listings}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{gensymb}
+
+\usepackage{enumitem}
+
+\newcommand{\shell}[1]{\texttt{\textbf{#1}}}
+\renewcommand*{\familydefault}{\sfdefault}
+\renewcommand*{\sfdefault}{lmss}
+\begin{document}
+	\title{Laboratorijska vježba 2\\{\small Osnove korištenja operacijskog sustava Linux}\vspace{-2em}}
+	\maketitle
+	Za svaki zadatak potrebno je napisati jednu bash skriptu. Kako biste lakše demonstrirali rješenja preporučamo da nakon svakog ključnog koraka u zadatku prikažete rezultate izvršavanja skripte. U tomu vam mogu pomoći sljedeće naredbe:
+	\begin{description}[leftmargin=!,labelwidth=4em,itemsep=0em]
+		\item[\shell{clear}] Čisti sadržaj terminala
+		\item[\shell{read -p}] Čita podatak s tipkovnice; Zaustavlja izvođenje skripte
+		\item[\shell{less}] Pager
+	\end{description}
+
+	\subsection*{Zadatak 1}
+	Sljedeće zadatke je potrebno rješiti s datotekom \shell{/usr/include/stdio.h} koristeći regularne izraze (engl. \textit{regular expressions}).
+	\begin{itemize}
+		\item Prebrojite redove koji su uvučeni.
+		\item Prebrojite koliko u datoteci postoji komentara i blokova s komentarima.
+	\end{itemize}
+
+	\subsection*{Zadatak 2}
+	\begin{itemize}
+		\item Ispisati sve datoteke čiji sadržaj počinje slovom \shell{c} iza kojeg slijede 2 slova, točka i barem jedno slovo iza točke \\ \textit{Primjer: \shell{cba.d} }
+		\item Ispisati sve datoteke koje ne sadrže slova od \shell{a} do \shell{k}, ali imaju barem jednu znamenku.
+	\end{itemize}
+
+	\subsection*{Zadatak 3}
+	Korištenjem \textit{here document} sintakse kreirati datoteku \shell{Top10} sadržaja:
+	\begin{verbatim}
+	Linux Mint 17.2
+	Ubuntu 15.10
+	Debian GNU/Linux 8.2
+	Mageia 5
+	Fedora 23
+	openSUSE Leap 42.1
+	Arch Linux
+	CentOS 7.2-1511
+	PCLinuxOS 2014.12
+	Slackware Linux 14.1
+	FreeBSD
+	\end{verbatim}
+	Nad datotekom je potrebno izvršiti sljedeće zadatke:
+	\begin{itemize}
+		\item Obrisati sve redove koji sadrže imena distribucija bez brojeva.
+		\item Brojeve verzija prebaciti na početak reda.
+		\item Sva slova promijeniti u mala.
+		\item Zatim sve samoglasnike prebaciti u velika slova.
+		\item Sortirati datoteku po numeričkoj vrijednosti brojeva na početku retka.
+	\end{itemize}
+	Ispišite sadržaj datoteke prije i poslije obrade.
+
+	\subsection*{Zadatak 4}
+	\begin{itemize}
+		\item Pronaći sve Python datoteke na sustavu. Ispisati nazive svih funkcija iz njih.
+		\item Pronaći sve C datoteke u sustavu. Ispisati sve pretprocesorske naredbe iz njih.
+		\item Pronaći sve datoteke u sustavu koje sadrže niz \shell{include}. Ispisati broj retka u kojemu se nalazi pronađeni niz.
+	\end{itemize}
+
+	\subsection*{Zadatak 5}
+	\begin{itemize}
+    \item Datotekama koje imaju naziv oblika \shell{PNG-DDMMYYYY} (dan, mjesec, godina) promijeniti naziv u \shell{DD\_MM\_YYYY.png} \\ \textit{Primjer: \shell{PNG-07092015} $\longrightarrow$ \shell{07\_09\_2015.png}}
+	\end{itemize}
+
+    \subsection*{Zadatak 6}
+    Ispiti su gotovi, a to se osjeti i na vašem Downloads direktoriju. U njemu
+    se nalazi obilje datoteka skinutih uoči međuispita. Budući da ste sad već
+    vični bash eksperti udlučili ste počistiti svoj Downloads direktorij u
+    stilu, s isključenim mišem, koristeći bash skriptu koju ste napisali u
+    opskurnom terminal text editoru!
+
+    Da rezimiramo, zadatak je ``pospremiti'' Downloads folder tako da datoteke iz
+    njega smjestimo tamo gdje im je i mjesto. Kako znamo gdje je mjesto kojim
+    datotekama? Sve datoteke koje imaju underscore '\_' imaju isti obrazac
+    imenovanja, a to je:
+
+    \begin{itemize}
+        \item[] \shell{IPRED\_Ime\_datoteke.eks}
+    \end{itemize}
+
+    Drugim riječima, prvo polje imena označavat će ime predmeta kojem datoteka
+    pripada, dok će ostala polja biti ime datoteke na čijem kraju se nalazi
+    ekstenzija koja će određivati tip.
+
+    Za početak smo vam pripremili umjetni Downloads folder na kojem ćete
+    testirati svoja rješenja. Da bi stvar bila još bolja, možete ga izbrisati
+    i ponovno napraviti baš onakvim kakav je bio u trenutku $t = -0$.
+
+    Pretpostakva je da u trenutku pokretanja skripte za postavljanje zadatka,
+    vaš trenutni direktorij izgleda ovako:
+
+    \begin{verbatim}
+$ tree .
+.
+|-- generate_files.sh
+|-- lab02.pdf
+|-- sort.sh
+|-- setup.sh
+    \end{verbatim}
+
+    Zadatak testirajte u \shell{/tmp/OKOSL} folderu zbog lakšeg eksperimentiranja.
+    Također, zbog lakšeg eksperimentiranja pripremili smo skripte koje će vam pomoći
+    postaviti zadatak tako da ne trošite vrijeme na brisanje krivih pokušaja.
+    Za početak je potrebno generirati naš umjetni downloads folder pokretanjem
+    skripte koja je priložena (\shell{setup.sh}). Skiptu za generiranje foldera
+    (\shell{generate\_files.sh}) dohvatite koristeći wget ili pak obični browser.
+
+    \subsubsection*{Pseudokod u nastavku potrebno je implementirati u okviru jedne
+    bash skripte}
+    \begin{verbatim}
+smjesti se u downloads folder;
+za svaki file u direktoriju:
+    ako file ima _ u imenu:
+        ime_predmeta = prvo polje imena;
+        ako ne postoji direktorij ../ime_predmeta:
+            napravi ga;
+        premjesti file u direktorij ../ime_predmeta;
+    inače
+        ako ne postoji direktorij ../razonoda:
+            napravi ga;
+        premjesti file u direktorij ../razonoda;
+    \end{verbatim}
+
+    Skripta radi super! Downloads direktorij je napokon čist. Jedini problem
+    je da je direktorij \shell{razonoda} sad pun različitog sadržaja... U
+    direktoriju se nalaze knjige (format \shell{.pdf} i \shell{.epub}), pjesme
+    (format \shell{.mp3}) i  slike (format \shell{.jpg} i \shell{.jpeg}).
+    Budući da i dalje ne znate gdje vam je miš odlučili ste čišćenje odraditi
+    do kraja u stilu pa ćete proširiti skriptu iz prvog dijela tako da sortira
+    i direktorij razonoda!
+
+    \subsubsection*{Pseudokod u nastavku potrebno je implementirati ili u okviru
+    skripte ranije ili u okviru nove skripte}
+\begin{verbatim}
+smjesti se u razonoda folder;
+za svaki file u folderu:
+    ako je ekstenzija .pdf ili .epub:
+        ako ne postoji folder ../knjige:
+            napravi ga
+        premjesti file u folder ../knjige
+    ako je ekstenzija .jpg ili .jpeg:
+        ako ne postoji folder ../slike:
+            napravi ga
+        premjesti file u folder ../slike
+    ako je ekstenzija .mp3:
+        ako ne postoji folder ../muzika:
+            napravi ga
+        premjesti file u folder ../muzika
+\end{verbatim}
+
+    Napomena: Možete biti sigurni da među datoteka u folderu razonoda sve imaju samo
+    jednu točku i to prije ekstenzija.
+
+\end{document}
