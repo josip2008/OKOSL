@@ -3,7 +3,8 @@
 #   Za sva pitanja, prijedloge i dileme oko ovog zadatka osjećajte se slobodno
 #   slati mail na darko.janekovic@fer.hr ili okosl@kset.org
 #
-#   S ljubavlju napisao Darko Janeković, 17.12.2018
+#   S ljubavlju napisao,
+#   Darko Janeković, 17.12.2018
 
 
 usage="
@@ -39,7 +40,7 @@ then
     cp ./generate_files.sh /tmp/OKOSL/.
 else
     echo "./generate_files.sh ne postoji u trenutnom direktoriju, wgetam file"
-    # TODO wget file u /tmp/OKOSL/.
+    wget https://marvin.kset.org/~okosl/lab2/generate_files.sh -O /tmp/OKOSL/generate_files.sh
 fi
 
 # odi u /tmp/OKOSL/, pokreni skriptu i vrati pwd kakav je bio prije

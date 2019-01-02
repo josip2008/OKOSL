@@ -8,7 +8,8 @@
 #   Za sva pitanja, prijedloge i dileme oko ovog zadatka osjećajte se slobodno
 #   slati mail na darko.janekovic@fer.hr ili okosl@kset.org
 #
-#   S ljubavlju napisao Darko Janeković, 17.12.2018
+#   S ljubavlju napisao,
+#   Darko Janeković, 17.12.2018
 
 touch "downloads/SZU_Pitanja_s_odgovorima_2012-13.doc"
 touch "downloads/SEM_Upute_za_pisanje_seminara.doc"
