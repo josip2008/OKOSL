@@ -22,7 +22,7 @@
 \begin{document}
 	\title{Laboratorijska vježba 2\\{\small Osnove korištenja operacijskog sustava Linux}\vspace{-2em}}
 	\maketitle
-	Za svaki zadatak potrebno je napisati jednu bash skriptu. Kako biste lakše demonstrirali rješenja preporučamo da nakon svakog ključnog koraka u zadatku prikažete rezultate izvršavanja skripte. U tomu vam mogu pomoći sljedeće naredbe:
+	Za svaki zadatak potrebno je napisati jednu bash skriptu. Kako biste lakše demonstrirali rješenja preporučamo da nakon svakog ključnog koraka u zadatku prikažete rezultate izvršavanja skripte. U tome vam mogu pomoći sljedeće naredbe:
 	\begin{description}[leftmargin=!,labelwidth=4em,itemsep=0em]
 		\item[\shell{clear}] Čisti sadržaj terminala
 		\item[\shell{read -p}] Čita podatak s tipkovnice; Zaustavlja izvođenje skripte
@@ -30,7 +30,7 @@
 	\end{description}
 
 	\subsection*{Zadatak 1}
-	Sljedeće zadatke je potrebno rješiti s datotekom \shell{/usr/include/stdio.h} koristeći regularne izraze (engl. \textit{regular expressions}).
+	Sljedeće je točke potrebno riješiti nad datotekom \shell{/usr/include/stdio.h} koristeći regularne izraze (engl. \textit{regular expressions}).
 	\begin{itemize}
 		\item Prebrojite redove koji su uvučeni.
 		\item Prebrojite koliko u datoteci postoji komentara i blokova s komentarima.
@@ -38,12 +38,12 @@
 
 	\subsection*{Zadatak 2}
 	\begin{itemize}
-		\item Ispisati sve datoteke čiji sadržaj počinje slovom \shell{c} iza kojeg slijede 2 slova, točka i barem jedno slovo iza točke \\ \textit{Primjer: \shell{cba.d} }
-		\item Ispisati sve datoteke koje ne sadrže slova od \shell{a} do \shell{k}, ali imaju barem jednu znamenku.
+		\item Ispišite sve datoteke čiji sadržaj počinje slovom \shell{c} iza kojeg slijede 2 slova, točka i barem jedno slovo iza točke \\ \textit{Primjer: \shell{cba.d} }
+		\item Ispišite sve datoteke koje ne sadrže mala slova od \shell{a} do \shell{k} (abecedno), a imaju barem jednu znamenku.
 	\end{itemize}
 
 	\subsection*{Zadatak 3}
-	Korištenjem \textit{here document} sintakse kreirati datoteku \shell{Top10} sadržaja:
+	Korištenjem \textit{here document} sintakse kreirajte datoteku \shell{Top10} sadržaja:
 	\begin{verbatim}
 	Linux Mint 17.2
 	Ubuntu 15.10
@@ -57,33 +57,33 @@
 	Slackware Linux 14.1
 	FreeBSD
 	\end{verbatim}
-	Nad datotekom je potrebno izvršiti sljedeće zadatke:
+	Nad datotekom je potrebno izvršiti sljedeće zadatke, koristeći naredbu \shell{sed}:
 	\begin{itemize}
 		\item Obrisati sve redove koji sadrže imena distribucija bez brojeva.
 		\item Brojeve verzija prebaciti na početak reda.
 		\item Sva slova promijeniti u mala.
-		\item Zatim sve samoglasnike prebaciti u velika slova.
+		\item Sve samoglasnike prebaciti u velika slova.
 		\item Sortirati datoteku po numeričkoj vrijednosti brojeva na početku retka.
 	\end{itemize}
 	Ispišite sadržaj datoteke prije i poslije obrade.
 
 	\subsection*{Zadatak 4}
 	\begin{itemize}
-		\item Pronaći sve Python datoteke na sustavu. Ispisati nazive svih funkcija iz njih.
-		\item Pronaći sve C datoteke u sustavu. Ispisati sve pretprocesorske naredbe iz njih.
-		\item Pronaći sve datoteke u sustavu koje sadrže niz \shell{include}. Ispisati broj retka u kojemu se nalazi pronađeni niz.
+		\item Pronađite sve Python datoteke na sustavu (hint: ekstenzija \shell{.py}) i ispišite nazive svih funkcija iz njih (hint: ključna riječ \shell{def}).
+		\item Pronađite sve C datoteke u sustavu. Ispišite sve pretprocesorske naredbe iz njih.
+		\item Pronađite sve datoteke u sustavu koje sadrže niz \shell{include}. Ispišite redni broj retka u kojemu se nalazi pronađeni niz.
 	\end{itemize}
 
 	\subsection*{Zadatak 5}
 	\begin{itemize}
-    \item Datotekama koje imaju naziv oblika \shell{PNG-DDMMYYYY} (dan, mjesec, godina) promijeniti naziv u \shell{DD\_MM\_YYYY.png} \\ \textit{Primjer: \shell{PNG-07092015} $\longrightarrow$ \shell{07\_09\_2015.png}}
+    \item Datotekama koje imaju naziv oblika \shell{PNG-DDMMYYYY} (dan, mjesec, godina) promijenite naziv u \shell{DD\_MM\_YYYY.png} \\ \textit{Primjer: \shell{PNG-07092015} $\longrightarrow$ \shell{07\_09\_2015.png}}
 	\end{itemize}
 
     \subsection*{Zadatak 6}
     Ispiti su gotovi, a to se osjeti i na vašem Downloads direktoriju. U njemu
     se nalazi obilje datoteka skinutih uoči međuispita. Budući da ste sad već
-    vični bash eksperti udlučili ste počistiti svoj Downloads direktorij u
-    stilu, s isključenim mišem, koristeći bash skriptu koju ste napisali u
+    vični bash eksperti odlučili ste počistiti svoj Downloads direktorij sa
+    stilom, s isključenim mišem, koristeći bash skriptu koju ste napisali u
     opskurnom text editoru!
 
     Da rezimiramo, zadatak je ``pospremiti'' Downloads folder tako da datoteke iz
@@ -104,7 +104,7 @@
     i ponovno napraviti baš onakvim kakav je bio u trenutku $t = -0$. Skriptu
     s rješenjima nazovite \texttt{sort.sh}.
 
-    Pretpostakva je da u trenutku pokretanja skripte za postavljanje zadatka,
+    Pretpostavka je da u trenutku pokretanja skripte za postavljanje zadatka,
     vaš trenutni direktorij izgleda ovako:
 
     \begin{verbatim}
@@ -116,13 +116,12 @@ $ tree .
 |-- setup.sh
     \end{verbatim}
 
-    Zadatak testirajte u \shell{/tmp/OKOSL} folderu zbog lakšeg eksperimentiranja.
+    Zadatak testirajte u \shell{/tmp/OKOSL} direktoriju zbog lakšeg eksperimentiranja.
     Također, zbog lakšeg eksperimentiranja pripremili smo skripte koje će vam pomoći
-    postaviti zadatak tako da ne trošite vrijeme na brisanje krivih pokušaja.
-    Za početak je potrebno generirati naš umjetni downloads folder pokretanjem
-    skripte koja je priložena (\shell{setup.sh}). Skiptu za generiranje direktorija
-    (\shell{generate\_files.sh}) dohvatite koristeći wget ili pak obični browser
-    \footnote{\url{https://marvin.kset.org/~okosl/lab2/}}.
+    postaviti zadatak tako da ne trošite vrijeme na brisanje netočnih pokušaja.
+    Za početak je potrebno generirati naš umjetni \shell{downloads} direktorij pokretanjem
+    skripte (\shell{setup.sh}). Skriptu \shell{setup.sh} i skriptu za generiranje direktorija
+    (\shell{generate\_files.sh}) dohvatite koristeći naredbu \shell{wget} ili pak obični browser s poveznice: \url{https://marvin.kset.org/~okosl/lab2/}.
 
     \subsubsection*{Pseudokod u nastavku potrebno je implementirati u okviru jedne
     bash skripte}
@@ -140,12 +139,12 @@ za svaki file u direktoriju:
         premjesti file u direktorij ../razonoda;
     \end{verbatim}
 
-    Skripta radi super! Downloads direktorij je napokon čist. Jedini problem
+    Skripta radi super! Direktorij \shell{downloads} je napokon čist. Jedini problem
     je da je direktorij \shell{razonoda} sad pun različitog sadržaja... U
     direktoriju se nalaze knjige (format \shell{.pdf} i \shell{.epub}), pjesme
     (format \shell{.mp3}) i  slike (format \shell{.jpg} i \shell{.jpeg}).
     Budući da i dalje ne znate gdje vam je miš odlučili ste čišćenje odraditi
-    do kraja u stilu pa ćete proširiti skriptu iz prvog dijela tako da sortira
+    do kraja sa stilom, pa ćete proširiti skriptu iz prvog dijela tako da sortira
     i direktorij \shell{razonoda}!
 
     \subsubsection*{Pseudokod u nastavku potrebno je implementirati ili u okviru
@@ -167,7 +166,7 @@ za svaki file u folderu:
         premjesti file u folder ../muzika
 \end{verbatim}
 
-    Napomena: Možete biti sigurni da među datoteka u folderu razonoda sve imaju samo
-    jednu točku i to prije ekstenzija.
+    Napomena: Možete biti sigurni da datoteke u direktoriju \shell{razonoda} sve imaju samo
+    jednu točku i to neposredno prije ekstenzije.
 
 \end{document}
